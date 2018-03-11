@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Perfil</title>
+ 	<link rel="stylesheet" type="text/css" href="estilos.css">
+
+<!-- Fuente: https://codepen.io/_gwen2405/pen/rraWPX -->
+
+<!-- Iconos -->
+<script defer src="https://use.fontawesome.com/releases/v5.0.8/js/all.js"></script>
+
+
+<!-- CSS desde CodePen
+	
+	Fuente: https://codepen.io/_gwen2405/pen/rraWPX
+
+-->
+<style>
+	
+	h1, h2, h3, h4, h5, p, a, ul, ol{
+  margin: 0;
+  padding: 0;
+}
+html{
+  font-size: 100%;
+}
+h1{
+  text-align: center;
+  color: #2669FF;
+  font-variant: small-caps;
+  font-size: 28px;
+  text-shadow: 0 1px 1px rgba(0,0,0,.2);
+  animation: fadeInDown .4s ease-in-out;
+}
+h2{
+  padding: 15px 10px;
+  text-align: center;
+  color: #2669FF;
+  font-size:26px;
+  font-variant: small-caps;
+  background: rgba(255,255,255,10); /*rgba(146, 147, 147, .8)*/
+  text-shadow: 0 2px 3px rgba(0,0,0,.3);
+  animation: fadeInOnly .5s ease-in-out;
+  box-shadow: 0 3px 2px rgba(0,0,0,.1);
+  -webkit-animation: fadeInOnly .8s linear ease-in-out;
+}
+h3{
+  font-size: 25px;
+  text-align: center;
+  padding: 15px 10px;
+  color: #2669FF;/*rgba(75,75,75,.8)*/ 
+  background: #FFF;
+  font-weight: 600;
+  font-variant: small-caps;
+  border-bottom: 1px solid rgba(146,147,147,.2);
+}
+h4{
+  font-variant: small-caps;
+  font-weight: 200;
+  color: #2669FF;
+}
+h5{
+  font-size: 18px;
+  font-weight: 200;
+  color: #2669FF;
+}
+h6{
+  font-variant: small-caps;
+  font-size: 16px;
+  color: #777;
+}
+a{
+  cursor: pointer;
+}
+body{
+			font-family: 'Hind Siliguri', sans-serif;
+			background: rgba(90, 84, 84, .7) url('https://cloud.githubusercontent.com/assets/8037580/18605179/85a080d2-7cbd-11e6-9079-ec09a8024662.png')repeat;
+			height: 100%;
+			width: 100%;
+			font-size: 15px;
+			line-height: 1.5em;
+		}
+		.card{
+			position: relative;
+			width: 350px;
+			height: auto;
+			/*border: 1px solid #CCC;*/
+			box-shadow: 0 2px 3px rgba(0,0,0,0.16), 0 2px 3px rgba(0,0,0,0.23);
+			margin: 20px auto;
+			background: #EEE;
+}
+		.top{
+			padding-bottom: 150px;
+		}
+		.img-container img{
+			height: 150px;
+			width: 150px;
+			left: 100px;
+			top:50px;
+			position: relative;
+			overflow: hidden;
+			border: 1px solid #DDD;
+			padding: 5px;
+			background: #FFF;
+			border-radius: 50%;
+			box-shadow: 0 1px 3px 0 rgba(75,75,75,0.5);
+			animation: fadeInOnly .8s ease-in-out;
+		}
+		@keyframes fadeInOnly{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+		@-webkit-keyframes fadeInOnly{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+		@-moz-keyframes fadeInOnly{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+		@-o-keyframes fadeInOnly{
+			0%{
+				opacity: 0;
+			}
+			100%{
+				opacity: 1;
+			}
+		}
+		.img-rounded img{
+		    position: relative;
+		    border-radius: 50%;
+			-moz-border-radius:50%;
+			-webkit-border-radius:50%;
+			border: 1px solid rgba(203,202,202,.2);
+		    top:20px;
+		    left: 0;
+		    width: 100px;
+		    height: 100px;
+		    z-index: 10;
+		    margin-left: 120px;
+		    animation: fadeIn .8s ease-in-out;
+		    margin-bottom: 20px;
+		    background: rgba(0,0,0,.10);
+		}
+		.description{
+			padding: 15px;
+			position: absolute;
+			line-height: 1.6em;
+			top:260px;
+			/*background: rgba(255,255,255,.9);
+			top:380px;*/
+			width: 100%;
+		}
+		.description p{
+			animation: fadeInDown .6s ease-in-out;
+			font-size: 15px;
+			color: #808080;
+			text-align: center;
+			text-shadow: 0 1px 1px rgba(0,0,0,.020);
+		}
+		@-webkit-keyframes fadeInDown {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, -100%, 0);
+		    transform: translate3d(0, -100%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+		@keyframes fadeInDown {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, -100%, 0);
+		    -o-transform: translate3d(0, -100%, 0);
+		    transform: translate3d(0, -100%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+		.list li{
+			list-style: none;
+			background: rgba(255,255,255,10);
+			display: block;
+			border-bottom: 1px solid rgba(75,75,75,.080);
+			font-size: 17px;
+		}
+		.list li a{
+			display: block;
+			text-decoration: none;
+			padding: 15px 10px;
+			color: #888;
+			font-variant: small-caps;
+			font-weight: 500;
+			text-shadow: 0 1px 2px rgba(75, 75, 75, .1);
+		}
+.list li a i{
+  color:#D1B57C;
+  padding-right:5px;
+}
+		.list li:first-child{
+			animation: slideInLeft .2s ease-in-out;
+		}
+		.list li:nth-child(2){
+			animation: slideInLeft .4s ease-in-out;
+		}
+		.list li:nth-child(3){
+			animation: slideInLeft .6s ease-in-out;
+		}
+		.list li:nth-child(4){
+			animation: slideInLeft .8s ease-in-out;
+		}
+		.list li:last-child{
+			animation: slideInLeft 1s ease-in-out;
+			border: 0;
+		}
+		/*.list li:nth-child(2n+1){
+			background: #FAFAFA;
+		}*/
+		.list li a:hover{
+			background: rgba(0,0,0,.4);
+			color: #FFF !important;
+		}
+		.list li span i{
+			display: block;
+		}
+		@keyframes slideInLeft {
+		  from {
+		    -webkit-transform: translate3d(-25%, 0, 0);
+		    transform: translate3d(-25%, 0, 0);
+		    visibility: visible;
+		  }
+
+		  to {
+		    -webkit-transform: translate3d(0, 0, 0);
+		    transform: translate3d(0, 0, 0);
+		  }
+		}
+
+		@-webkit-keyframes slideInLeft{
+		   from {
+		    -webkit-transform: translate3d(-25%, 0, 0);
+		    transform: translate3d(-25%, 0, 0);
+		    visibility: visible;
+		  }
+
+		  to {
+		    -webkit-transform: translate3d(0, 0, 0);
+		    transform: translate3d(0, 0, 0);
+		  }
+		}
+		@-moz-keyframes slideInLeft{
+		   from {
+		    -webkit-transform: translate3d(-25%, 0, 0);
+		    transform: translate3d(-25%, 0, 0);
+		    visibility: visible;
+		  }
+
+		  to {
+		    -webkit-transform: translate3d(0, 0, 0);
+		    transform: translate3d(0, 0, 0);
+		  }
+		}
+		@-o-keyframes slideInLeft{
+		   from {
+		    -webkit-transform: translate3d(-25%, 0, 0);
+		    transform: translate3d(-25%, 0, 0);
+		    visibility: visible;
+		  }
+
+		  to {
+		    -webkit-transform: translate3d(0, 0, 0);
+		    transform: translate3d(0, 0, 0);
+		  }
+		}
+		.list-content{
+			background: #F5F5F5;
+			position: absolute;
+			top:0;
+			bottom: 0;
+			height: auto;
+			z-index: 10;
+			display: none;
+			animation: fadeIn .5s ease-in-out;
+			overflow: scroll;
+      overflow-x:hidden;
+		}
+		.list-border li{
+			list-style: none;
+			padding: 10px;
+			padding-bottom: 10px;
+			color: #888;
+			margin: 10px 15px 10px 15px;
+			background: #FFF;
+			border: 1px solid rgba(203,202,202,.4);
+			border-radius: 4px;
+			animation: fadeInUp .8s ease-in-out;
+		}
+		@keyframes fadeIn{
+			from{
+				opacity: 0;
+				transform: rotateY(180deg);
+				transform-style: preserve-3d;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		@-webkit-keyframes fadeIn{
+			from{
+				opacity: 0;
+				transform: rotateY(180deg);
+				transform-style: preserve-3d;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		@-moz-keyframes fadeIn{
+			from{
+				opacity: 0;
+				transform: rotateY(180deg);
+				transform-style: preserve-3d;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		@-o-keyframes fadeIn{
+			from{
+				opacity: 0;
+				transform: rotateY(180deg);
+				transform-style: preserve-3d;
+			}
+			to{
+				opacity: 1;
+			}
+		}
+		@keyframes fadeInUp {
+		  from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, 50%, 0);
+		    transform: translate3d(0, 50%, 0);
+		  }
+
+		  to {
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+		@-webkit-keyframes fadeInUp{
+		   from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, 50%, 0);
+		    transform: translate3d(0, 50%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+		@-moz-keyframes fadeInUp{
+			from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, 50%, 0);
+		    transform: translate3d(0, 50%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+		@-o-keyframes fadeInUp{
+			from {
+		    opacity: 0;
+		    -webkit-transform: translate3d(0, 50%, 0);
+		    transform: translate3d(0, 50%, 0);
+		  }
+
+		  to {
+		    opacity: 1;
+		    -webkit-transform: none;
+		    transform: none;
+		  }
+		}
+		.profile ul{
+			margin-top: 20px;
+		}
+		.profile li strong{
+			color: #56b880;
+			font-weight: 200;
+		}
+		.profile p{
+			margin: 10px;
+			padding: 10px;
+			color: #777;
+		}
+		.movies p{
+			padding: 10px;
+			margin: 10px;
+			color: #888;
+		}
+		.movies li a{
+			text-decoration: none;
+		}
+		.movies li span{
+			color: rgba(75,75,75,.8);
+		}
+		::-webkit-scrollbar{
+			width: 8px;
+		}
+		::-webkit-scrollbar-track{
+			background: #EEE;
+		}
+		::-webkit-scrollbar-thumb{
+			background: #000;
+		}
+		::-webkit-scrollbar-button{
+			background: #CCC;
+		}
+		::-webkit-scrollbar-corner{
+			background: #EEE;
+		}
+		.trivia p{
+			padding: 10px;
+			margin: 10px;
+		}
+		.awards p{
+			padding: 10px;
+			margin: 10px;
+		}
+		.btn-close{
+			font-size: 20px;
+			position: absolute;
+			top:10px;
+			left:5px;
+			cursor: pointer;
+			text-align: center;
+			/*background: #92C7C7;
+			border-radius: 50%;*/
+			-moz-border-radius:50%;
+			-webkit-border-radius:50%;
+			line-height: 35px;
+			width: 35px;
+			height: 35px;
+			-webkit-transition: all 0.3s;
+		    -moz-transition: all 0.3s;
+		    -ms-transition: all 0.3s;
+		    -o-transition: all 0.3s;
+		    transition: all 0.3s;
+		}
+		a.btn-close i{
+			color: rgba(0, 0, 0, .4);
+		}
+		.btn-close:hover{
+			animation: fa-spin-fast .5s ease-in-out;
+			-moz-animation:fa-spin-fast .5s ease-in-out;
+			-webkit-animation: fa-spin-fast .5s ease-in-out;
+		}
+		@-webkit-keyframes fa-spin-fast {
+		    0% {
+		        -webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        -webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+		    }
+		}
+		@keyframes fa-spin-fast{
+			 0% {
+		        -webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        -webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+		    }
+		}
+		@-moz-keyframes fa-spin-fast{
+			 0% {
+		        -webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        -webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+		    }
+		}
+		@-o-keyframes fa-spin-fast{
+			 0% {
+		        -webkit-transform: rotate(0deg);
+		        transform: rotate(0deg);
+		    }
+		    100% {
+		        -webkit-transform: rotate(359deg);
+		        transform: rotate(359deg);
+		    }
+		}
+		.fa-lg{
+			font-size: 20px;
+			color: #878;
+		}
+		.fa-times{
+			color: #888;
+		}
+		.gallery li{
+			margin: 10px 10px 10px 15px;
+		}
+		.quotes p{
+			color: rgba(203,202,202,.8);
+			padding: 10px;
+			margin: 10px 10px 0 10px;
+			animation: fadeInUp .8s ease-in-out;
+		}
+		
+</style>
+
+</head>
+
+<!-- Maquetado de la página -->
+
+<body>
+		<div class="card">
+		<div class="front">
+			<div class="title"><h2>CV Online</h2></div>
+			<div class="top">
+				<div class="img-container">
+					<img src="Images/JR_2.png" alt="image">
+				</div>
+			</div>
+			<div class="description">
+				<h1>JORGE ROLDÁN</h1>
+				<p>Desarrollador, Emprendedor y Docente</p>
+			</div>
+			<div class="list">
+				<ul>
+					<li><a><i class="fa fa-user"></i>&nbsp;Quién soy</a></li>
+					<li><a><i class="fa fa-gear"></i>&nbsp;Intereses</a></li>
+					<li><a><i class="fa fa-film"></i>&nbsp;Experiencia</a></li>
+					<li><a><i class="fa fa-certificate"></i>&nbsp;Formación</a></li>
+					<li><a><i class="fa fa-hand-o-up"></i>&nbsp;Proyectos</a></li>
+				</ul>
+			</div>
+		</div>
+		<div class="list-content profile">
+			<h3>Quién soy</h3>
+			<div class="img-rounded">
+				<img src="Images/JR_3.png" alt="image">
+			</div>
+			<ul class="list-border">
+				<li>	
+					<strong>
+						Nombre:
+					</strong>
+					Jorge Roldán
+				</li>
+				<li>
+					<strong>Fecha de Nacimiento:</strong>
+					2 de Febrero de 1985
+				</li>
+				<li>
+					<strong>
+						Lugar de Nacimiento:
+					</strong>
+					Puebla, México.
+				</li>
+				 <li>
+				 	<strong>
+				 		Resumen:
+				 	</strong>
+						Lorem ipsum dolor sit amet, consectetur adipisicing elit. Corporis saepe quasi non perspiciatis est provident nemo iure, beatae praesentium nobis modi harum libero, fugiat velit asperiores rerum voluptate, ad maxime!. 
+				 </li>
+				 <li>
+				 	<strong>
+				 		Frase:
+				 	</strong>
+						We&apos;re all flawed human beings and we all have a cauldron of psychosis which we have to unravel as we grow older and find the way we fit in to live our lives as best as possible.
+				 </li>
+				 <li>
+				 	<strong>
+				 		Social:
+				 	</strong>
+					<a href="https://tomhardyvariations.tumblr.com/" target="_blank" class="btn btn-info"><i class="fa fa-tumblr"></i> </a>&nbsp;
+        <a href="https://www.instagram.com/tomhardyholdingdogs/?hl=en" target="_blank" class="btn btn-danger"><i class="fa fa-instagram"></i> </a>   
+				
+			</ul>
+			<p>Para más información puedes visitar: <a href="https://www.linkedin.com/in/roldanjorge/" target="_blank">LinkedIn</a></p>
+			<a class="btn-close"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="list-content movies">
+			<h3>Experiencias</h3>
+			<ul class="list-border">
+				<li>
+					<h5>2001</h5>
+					<span>Trabajo 1
+					<br>
+					Empresa 1</span>
+				</li>
+				<li>
+					<h5>2004</h5>
+					<span>Trabajo 2
+					<br>
+					Empresa 2</span>
+				</li>
+				<li>
+					<h5>2004</h5>
+					<span>Trabajo 3
+					<br>
+					Empresa 3</span>
+				</li>
+				<li>
+					<h5>2001</h5>
+					<span>Trabajo 4
+					<br>
+					Empresa 4</span>
+				</li>
+				<li>
+					<h5>2004</h5>
+					<span>Trabajo 5
+					<br>
+					Empresa 5</span>
+				</li>
+				<li>
+					<h5>2004</h5>
+					<span>Trabajo 6
+					<br>
+					Empresa 6</span>
+				</li>
+			</ul>
+			<p>Para más información puedes visitar: <a href="https://www.linkedin.com/in/roldanjorge/" target="_blank">LinkedIn</a></p>
+			<a class="btn-close"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="list-content trivia">
+			<h3>Intereses</h3>
+			<ol class="list-border">
+				<li>
+					Le encanta viajar. 
+				</li>
+				<li>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Eveniet nemo debitis quae doloribus numquam tempore assumenda laboriosam velit ex, minus nihil deleniti. Pariatur accusantium, distinctio facere non obcaecati perspiciatis voluptatibus!
+				</li>
+				<li>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur sint consequuntur fuga ex quod. Qui veniam culpa perferendis recusandae, dolore. Ea voluptatum reiciendis, dolorum tempora ipsum quisquam. Odio, sequi deleniti..
+				</li>
+				<li>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quisquam sapiente delectus, mollitia veritatis enim odit qui eum distinctio aliquam illo numquam voluptatibus esse impedit quod cumque similique consequuntur maxime. Velit?.
+				</li>
+				<li>
+					Lorem ipsum dolor sit amet, consectetur adipisicing elit. Odio aliquam officiis rem quia quae porro ipsum, doloremque. Quo cum eius dolorem sit animi praesentium porro laboriosam autem, saepe maxime, vitae.
+				</li>
+				<li>
+					Lorem &lsquo;ipsum dolor sit ame&apos;t, consectetur adipisicing elit.&rsquo; Laudantium, officia, necessitatibus. Sit, enim, ducimus. Placeat beatae odit, fugit culpa quod excepturi quos in delectus incidunt ab, fuga. Quam, ipsum eos.
+				</li>
+			</ol>
+			<p>Para más información puedes visitar: <a href="https://www.linkedin.com/in/roldanjorge/" target="_blank">LinkedIn</a></p>
+			<a class="btn-close"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="list-content awards">
+			<h3>Formación</h3>
+			<ul class="list-border">
+				<li>
+					<h4>Ing. Industrial</h4>
+					2004-2009: Tecnológico de Monterrey
+				</li>
+				<li>
+					<h4>Ing. Industrial</h4>
+					2004-2009: Tecnológico de Monterrey
+				</li>
+				<li>
+					<h4>Ing. Industrial</h4>
+					2004-2009: Tecnológico de Monterrey
+				</li>
+				<li>
+					<h4>Ing. Industrial</h4>
+					2004-2009: Tecnológico de Monterrey
+				</li>
+			</ul>
+			<p>Para más información puedes visitar: <a href="https://www.linkedin.com/in/roldanjorge/" target="_blank">LinkedIn</a></p>
+			<a class="btn-close"><i class="fa fa-times"></i></a>
+		</div>
+		<div class="list-content quotes">
+			<h3>Proyectos</h3>
+			<p class="col-xs-10">Aqui podrás ver algunos de los proyectos en los que ha trabajado Jorge Roldán</p>
+			<ul class="list-border gallery">
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/encuestados-icon.png" class="img-responsive" alt="">
+					<h6>
+						<strong>Encuestados</strong> 
+						<br>(Marzo, 2018) 
+					</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/mapa-interactivo-icon.png" class="img-responsive" alt="">
+					<h6>
+						<strong>Mapa Interactivo</strong> 
+						<br> (Marzo, 2018)
+					</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/peli-vs-peli-icon.png" class="img-responsive" alt="">
+					<h6><strong>Peli vs Peli</strong> <br>(Marzo, 2018)</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/pixel-art-icon.png" class="img-responsive" alt="">
+					<h6>
+						<strong>Pixel Art</strong> 
+						<br>(Marzo, 2018)
+					</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/recargado-icon.png" class="img-responsive" alt="">
+					<h6>
+						<strong>Recargado</strong> 
+						<br>(Marzo, 2018)</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/que-veo-icon.png" class="img-responsive" alt="">
+					<h6><strong>Que veo</strong> <br>(Marzo, 2018))</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/ciudad-zombie-icon.png" class="img-responsive" alt="">
+					<h6>
+						<strong>Ciudad Zombie</strong> 
+						<br>(Marzo, 2018)
+					</h6>
+				</li>
+				<li class="col-xs-5">
+					<img src="../Imagenesacamica/cv-icon.png" class="img-responsive" alt="">
+					<h6>
+						<strong>CV Online </strong> 
+						<br>(Marzo, 2018)
+					</h6>
+				</li>
+			</ul>
+			<a class="btn-close"><i class="fa fa-times"></i></a>
+		</div>
+</body>
+
+
+<!-- Comportamiento -->
+
+<script>
+	$(function(){
+		$('.list li:first-child').click(function(){
+			 window.setTimeout(function() {
+           $('.profile').slideToggle();
+                }, 300);
+		});
+		$('.list li:nth-child(2)').click(function(){
+			 window.setTimeout(function(){
+			$('.trivia').slideToggle();
+					},300);
+		});
+		$('.list li:nth-child(3)').click(function(){
+			 window.setTimeout(function(){
+			$('.movies').slideToggle(); 
+					},300);
+		});
+		$('.list li:nth-child(4)').click(function(){
+			 window.setTimeout(function(){
+			$('.awards').slideToggle();
+				}, 300);
+		});
+		$('.list li:nth-child(5)').click(function(){
+			 window.setTimeout(function(){
+			$('.quotes').slideToggle();
+				}, 300);
+		});
+		$('.btn-close').click(function(){
+			$('.list-content').hide(300);
+		});
+	});
+</script>
+</html>
