@@ -7,6 +7,8 @@ var montoExtraer = 0;
 var restriccionSaldoCuenta = false;
 var restriccionLimiteExtraccion = false;
 var restriccionBilletes = false;
+var montoExtraerFloat = 0;
+var montoDepositarFloat = 0;
 
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML
@@ -18,10 +20,12 @@ actualizarLimiteEnPantalla();
 //Funciones PASO 1
 function sumarDinero(montoDepositar){
 	saldoCuenta += parseFloat(montoDepositar);
+	montoDepositar = montoDepositarFloat;
 }
 
 function restarDinero(montoExtraer){
 	saldoCuenta -= parseFloat(montoExtraer);
+	montoExtraer = montoExtraerFloat;
 }
 
 //Funciones que tenes que completar
@@ -47,7 +51,7 @@ function cambiarLimiteDeExtraccion() {
 
 
 function respetaSaldoCuenta(){
-	if (montoExtraer < saldoCuenta){
+	if (montoExtraerFloat < saldoCuenta){
 		restriccionSaldoCuenta = true;
 		console.log(restriccionSaldoCuenta)
 	} else {
@@ -57,7 +61,7 @@ function respetaSaldoCuenta(){
 }
 
 function respetaLimiteExtraccion(){
-	if (montoExtraer < limiteExtraccion){
+	if (montoExtraerFloat < limiteExtraccion){
 		restriccionLimiteExtraccion = true;
 		console.log(restriccionLimiteExtraccion)
 	} else {
@@ -67,7 +71,7 @@ function respetaLimiteExtraccion(){
 }
 
 function respetaBilletes100(){
-	if (montoExtraer % 100 != 0){
+	if (montoExtraerFloat % 100 != 0){
 		restriccionBilletes = true;
 		console.log(restriccionBilletes)
 	} else {
