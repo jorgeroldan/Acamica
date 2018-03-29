@@ -119,7 +119,7 @@ function depositarDinero() {
 function pagarServicio() {
 	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua" + "\n 2. Telefono" + "\n 3. Luz" + "\n 4. Internet" );
 	console.log(servicioAPagar);
-	switch (parseInt(servicioAPagar){
+	switch (parseInt(servicioAPagar)){
 		case 1: mostrarTexto ("El servicio de" + servicio1 + "tiene un costo de: "+ precioAgua)
 		break;  
 		case 2: mostrarTexto ("El servicio de" + servicio2 + "tiene un costo de: "+ precioTelefono)
