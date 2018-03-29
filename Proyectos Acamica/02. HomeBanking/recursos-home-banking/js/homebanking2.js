@@ -25,7 +25,7 @@ function restarDinero(montoExtraer){
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
 	nuevoLimiteExtraccion = prompt("Ingrese un nuevo limite de extracción: ");
-	nuevoLimiteExtraccion = limiteExtraccion;
+	limiteExtraccion = nuevoLimiteExtraccion;
 	parseInt(limiteExtraccion, 10);
 	actualizarLimiteEnPantalla();
 	alert("Tu nuevo limite de extracción es: " + limiteExtraccion);
