@@ -47,7 +47,7 @@ function cambiarLimiteDeExtraccion() {
 
 
 function respetaSaldoCuenta(){
-	if (montoExtraer % 100 != 0){
+	if (montoExtraer < saldoCuenta){
 		restriccionSaldoCuenta = true;
 		console.log(restriccionSaldoCuenta)
 	} else {
@@ -57,7 +57,7 @@ function respetaSaldoCuenta(){
 }
 
 function respetaLimiteExtraccion(){
-	if (montoExtraer % 100 != 0){
+	if (montoExtraer < limiteExtraccion){
 		restriccionLimiteExtraccion = true;
 		console.log(restriccionLimiteExtraccion)
 	} else {
