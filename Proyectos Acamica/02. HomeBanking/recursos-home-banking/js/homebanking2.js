@@ -4,7 +4,9 @@ var saldoCuenta = 30000;
 var limiteExtraccion = 5000;
 var montoDepositar = 0;
 var montoExtraer = 0;
-
+var restriccionSaldoCuenta = false;
+var restriccionLimiteExtraccion = false;
+var restriccionBilletes = false;
 
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML
@@ -15,54 +17,85 @@ actualizarLimiteEnPantalla();
 
 //Funciones PASO 1
 function sumarDinero(montoDepositar){
-	saldoCuenta += montoDepositar;
+	saldoCuenta += parseFloat(montoDepositar);
 }
 
 function restarDinero(montoExtraer){
-	saldoCuenta -= montoExtraer;
+	saldoCuenta -= parseFloat(montoExtraer);
 }
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
 	nuevoLimiteExtraccion = prompt("Ingrese un nuevo limite de extracción: ");
 	limiteExtraccion = nuevoLimiteExtraccion;
-	parseInt(limiteExtraccion, 10);
 	actualizarLimiteEnPantalla();
 	alert("Tu nuevo limite de extracción es: " + limiteExtraccion);
 }
 
-function extraerDinero() {
-		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-		parseInt(montoExtraer, 10);
-		var saldoAnterior = saldoCuenta;
-		restarDinero(montoExtraer);
-		actualizarSaldoEnPantalla();
-		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
-}
-
-
-// extración respetando los limites de extracción y saldo en la cuenta
+// Extracción sin restricciones
 
 // function extraerDinero() {
 // 		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-// 		parseInt(montoExtraer, 10);
-// 	if (saldoCuenta >= montoExtraer) && (limiteExtraccion <= montoExtraer) {
 // 		var saldoAnterior = saldoCuenta;
 // 		restarDinero(montoExtraer);
 // 		actualizarSaldoEnPantalla();
 // 		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
-// 	} else {
-// 		alert("No cuentas con fondos suficientes para esa transacción o estas superando el limite de extracción, intenta de nuevo con un monto menor");		
-// 	} 
 // }
 
 
+//Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
 
 
+function respetaSaldoCuenta(){
+	if (montoExtraer % 100 != 0){
+		restriccionSaldoCuenta = true;
+		console.log(restriccionSaldoCuenta)
+	} else {
+		restriccionSaldoCuenta = false;
+		console.log(restriccionSaldoCuenta)
+	}
+}
+
+function respetaLimiteExtraccion(){
+	if (montoExtraer % 100 != 0){
+		restriccionLimiteExtraccion = true;
+		console.log(restriccionLimiteExtraccion)
+	} else {
+		restriccionLimiteExtraccion = false;
+		console.log(restriccionLimiteExtraccion)
+	}
+}
+
+function respetaBilletes100(){
+	if (montoExtraer % 100 != 0){
+		restriccionBilletes = true;
+		console.log(restriccionBilletes)
+	} else {
+		restriccionBilletes = false;
+		console.log(restriccionBilletes)
+	}
+}
+
+
+function extraerDinero() {
+	montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
+	if (restriccionSaldoCuenta = true){
+		alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
+	} else if (restriccionLimiteExtraccion = true){
+		alert("Estas excediendo tu limite diario de extracción: " + "$" + limiteExtraccion);
+	} else if (respetaBilletes100 = true){
+		alert("Este cajero solamente puede entregar billetes de 100 pesos argentinos");	
+	} else (restriccionSaldoCuenta = true) && (restriccionLimiteExtraccion = true) && (respetaBilletes100 = true){
+		var saldoAnterior = saldoCuenta;	
+		restarDinero(montoExtraer);
+		actualizarSaldoEnPantalla();
+		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+	}
+}
+			
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
-	parseInt(montoDepositar, 10);
 	var saldoAnterior = saldoCuenta;
 	sumarDinero(montoDepositar);
 	actualizarSaldoEnPantalla();
