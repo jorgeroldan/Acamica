@@ -32,13 +32,33 @@ function cambiarLimiteDeExtraccion() {
 }
 
 function extraerDinero() {
-	montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-	parseInt(montoExtraer, 10);
-	var saldoAnterior = saldoCuenta;
-	restarDinero(montoExtraer);
-	actualizarSaldoEnPantalla();
-	alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
+		parseInt(montoExtraer, 10);
+		var saldoAnterior = saldoCuenta;
+		restarDinero(montoExtraer);
+		actualizarSaldoEnPantalla();
+		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
 }
+
+
+// extración respetando los limites de extracción y saldo en la cuenta
+
+// function extraerDinero() {
+// 		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
+// 		parseInt(montoExtraer, 10);
+// 	if (saldoCuenta >= montoExtraer) && (limiteExtraccion <= montoExtraer) {
+// 		var saldoAnterior = saldoCuenta;
+// 		restarDinero(montoExtraer);
+// 		actualizarSaldoEnPantalla();
+// 		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+// 	} else {
+// 		alert("No cuentas con fondos suficientes para esa transacción o estas superando el limite de extracción, intenta de nuevo con un monto menor");		
+// 	} 
+// }
+
+
+
+
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
