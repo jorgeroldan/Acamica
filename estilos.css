@@ -1,0 +1,55 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-size: 18px;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+#header {
+  background: #f00;
+}
+#principal {
+  background: #0f0;
+  width: 60%;
+  float: left;
+}
+#secundario {
+  background: #00f;
+  width: 20%;
+  float: left;
+}
+#terciario {
+  background: #ff0;
+  width: 20%;
+  float: left;
+}
+#footer {
+  background: #0ff;
+  clear: both;
+}
+
+
+/*.ancho{
+	width: 80%;
+	width-max:1500;
+	margin-left: auto;
+	margin-right: auto;
+}
+.columnaizquierda {
+  float: left;
+  width:60%;
+}
+
+.columnaderecha {
+  float: left;
+  width:40%;
+}
+
+div p.centrado {
+	justify-content: center !important;
+
+}*/

@@ -1,4 +1,4 @@
-//Declaración de variables
+//Declaración de variables para funciones principales
 var nombreUsuario = "Jorge"
 var saldoCuenta = 30000;
 var limiteExtraccion = 5000;
@@ -10,7 +10,7 @@ var restriccionBilletes = false;
 var montoExtraerFloat = 0;
 var montoDepositarFloat = 0;
 
-// variables para pago de servicios
+// Declaración de variables para pago de servicios
 var servicioAPagar = 0;
 var servicio1 = "Agua";
 var servicio2 = "Telefono";
@@ -47,65 +47,69 @@ function cambiarLimiteDeExtraccion() {
 
 // Extracción sin restricciones
 
-function extraerDinero() {
-		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-		var saldoAnterior = saldoCuenta;
-		restarDinero(montoExtraer);
-		actualizarSaldoEnPantalla();
-		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
-}
-
-
-//Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
-
-
-// function respetaSaldoCuenta(){
-// 	if (montoExtraerFloat < saldoCuenta){
-// 		restriccionSaldoCuenta = true;
-// 		console.log(restriccionSaldoCuenta)
-// 	} else {
-// 		restriccionSaldoCuenta = false;
-// 		console.log(restriccionSaldoCuenta)
-// 	}
-// }
-
-// function respetaLimiteExtraccion(){
-// 	if (montoExtraerFloat < limiteExtraccion){
-// 		restriccionLimiteExtraccion = true;
-// 		console.log(restriccionLimiteExtraccion)
-// 	} else {
-// 		restriccionLimiteExtraccion = false;
-// 		console.log(restriccionLimiteExtraccion)
-// 	}
-// }
-
-// function respetaBilletes100(){
-// 	if (montoExtraerFloat % 100 != 0){
-// 		restriccionBilletes = true;
-// 		console.log(restriccionBilletes)
-// 	} else {
-// 		restriccionBilletes = false;
-// 		console.log(restriccionBilletes)
-// 	}
-// }
-
-
 // function extraerDinero() {
-// 	montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-// 	if (restriccionSaldoCuenta = true){
-// 		alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
-// 	} else if (restriccionLimiteExtraccion = true){
-// 		alert("Estas excediendo tu limite diario de extracción: " + "$" + limiteExtraccion);
-// 	} else if (respetaBilletes100 = true){
-// 		alert("Este cajero solamente puede entregar billetes de 100 pesos argentinos");	
-// 	} else (restriccionSaldoCuenta = true) && (restriccionLimiteExtraccion = true) && (respetaBilletes100 = true){
-// 		var saldoAnterior = saldoCuenta;	
+// 		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
+// 		var saldoAnterior = saldoCuenta;
 // 		restarDinero(montoExtraer);
 // 		actualizarSaldoEnPantalla();
 // 		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
-// 	}
 // }
-			
+
+
+//Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
+function extraerDinero() {
+	montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
+	montoExtraerFloat = parseFloat(montoExtraer);
+	function respetaSaldoCuenta();
+	function espetaLimiteExtraccion();
+	function respetaBilletes100();
+	if (restriccionSaldoCuenta == true){
+		alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
+	} else if (restriccionLimiteExtraccion == true){
+		alert("Estas excediendo tu limite diario de extracción: " + "$" + limiteExtraccion);
+	} else if (restriccionBilletes == true){
+		alert("Este cajero solamente puede entregar billetes de 100 pesos argentinos");	
+	} else if (restriccionSaldoCuenta === true) && (restriccionLimiteExtraccion === true) && (respetaBilletes100 === true){
+		var saldoAnterior = saldoCuenta;	
+		restarDinero(montoExtraer);
+		actualizarSaldoEnPantalla();
+		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+	} else {
+		alert("Ojo");	
+
+	}
+}
+
+
+	function respetaSaldoCuenta(){
+		if (montoExtraerFloat < saldoCuenta){
+			restriccionSaldoCuenta = true;
+			console.log(restriccionSaldoCuenta)
+		} else {
+			restriccionSaldoCuenta = false;
+			console.log(restriccionSaldoCuenta)
+		}
+	}
+
+	function respetaLimiteExtraccion(){
+		if (montoExtraerFloat < limiteExtraccion){
+			restriccionLimiteExtraccion = true;
+			console.log(restriccionLimiteExtraccion)
+		} else {
+			restriccionLimiteExtraccion = false;
+			console.log(restriccionLimiteExtraccion)
+		}
+	}
+
+	function respetaBilletes100(){
+		if (montoExtraerFloat % 100 != 0){
+			restriccionBilletes = true;
+			console.log(restriccionBilletes)
+		} else {
+			restriccionBilletes = false;
+			console.log(restriccionBilletes)
+		}
+	}			
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
@@ -120,13 +124,13 @@ function pagarServicio() {
 	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua" + "\n 2. Telefono" + "\n 3. Luz" + "\n 4. Internet" );
 	console.log(servicioAPagar);
 	switch (parseInt(servicioAPagar)){
-		case 1: mostrarTexto ("El servicio de" + servicio1 + "tiene un costo de: "+ precioAgua)
+		case 1: mostrarTexto ("El servicio de" + servicio1 + "tiene un costo de: " + precioAgua)
 		break;  
-		case 2: mostrarTexto ("El servicio de" + servicio2 + "tiene un costo de: "+ precioTelefono)
+		case 2: mostrarTexto ("El servicio de" + servicio2 + "tiene un costo de: " + precioTelefono)
 		break; 
-		case 3: mostrarTexto ("El servicio de" + servicio3 + "tiene un costo de: "+ precioLuz)
+		case 3: mostrarTexto ("El servicio de" + servicio3 + "tiene un costo de: " + precioLuz)
 		break; 
-		case 4: mostrarTexto ("El servicio de" + servicio4 + "tiene un costo de: "+ precioInternet)
+		case 4: mostrarTexto ("El servicio de" + servicio4 + "tiene un costo de: " + precioInternet)
 		break;
 		default: mostrarTexto ("No existe ningún otro servicio asociado")
 		break;  
