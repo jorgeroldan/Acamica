@@ -3,12 +3,12 @@ var nombreUsuario = "Jorge"
 var saldoCuenta = 30000;
 var limiteExtraccion = 5000;
 var montoDepositar = 0;
-var montoExtraer = 0;
 var restriccionSaldoCuenta = false;
 var restriccionLimiteExtraccion = false;
 var restriccionBilletes = false;
 var montoExtraerFloat = 0;
 var montoDepositarFloat = 0;
+var montoExtraerTexto = 0;
 
 // Declaración de variables para pago de servicios
 var servicioAPagar = 0;
@@ -45,61 +45,37 @@ function cambiarLimiteDeExtraccion() {
 	alert("Tu nuevo limite de extracción es: " + limiteExtraccion);
 }
 
-
 //Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
+function respetaSaldoCuenta(montoExtraer){
+	return (montoExtraer < saldoCuenta);
+}
+
+function respetaLimiteExtraccion(montoExtraer){
+	return (montoExtraer < limiteExtraccion);
+}
+
+function respetaBilletes100(montoExtraer){
+	return (montoExtraer % 100 == 0);
+}
+
+
 function extraerDinero() {
-	montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-	montoExtraerFloat = parseFloat(montoExtraer);
-	function respetaSaldoCuenta();
-	function espetaLimiteExtraccion();
-	function respetaBilletes100();
-	if (restriccionSaldoCuenta == true){
+	montoExtraerTexto = prompt("Que cantidad de dinero quieres extraer?: ");
+	var montoExtraer = parseFloat(montoExtraerTexto);
+	if (!respetaSaldoCuenta(montoExtraer)){
 		alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
-	} else if (restriccionLimiteExtraccion == true){
+	} else if (!respetaLimiteExtraccion(montoExtraer)){
 		alert("Estas excediendo tu limite diario de extracción: " + "$" + limiteExtraccion);
-	} else if (restriccionBilletes == true){
+	} else if (!respetaBilletes100(montoExtraer)){
 		alert("Este cajero solamente puede entregar billetes de 100 pesos argentinos");	
-	} else if (restriccionSaldoCuenta === true) && (restriccionLimiteExtraccion === true) && (respetaBilletes100 === true){
+	} else {
 		var saldoAnterior = saldoCuenta;	
 		restarDinero(montoExtraer);
 		actualizarSaldoEnPantalla();
 		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
-	} else {
-		alert("Ojo");	
-
-	}
+	} 
 }
-
-
-	function respetaSaldoCuenta(){
-		if (montoExtraerFloat < saldoCuenta){
-			restriccionSaldoCuenta = true;
-			console.log(restriccionSaldoCuenta)
-		} else {
-			restriccionSaldoCuenta = false;
-			console.log(restriccionSaldoCuenta)
-		}
-	}
-
-	function respetaLimiteExtraccion(){
-		if (montoExtraerFloat < limiteExtraccion){
-			restriccionLimiteExtraccion = true;
-			console.log(restriccionLimiteExtraccion)
-		} else {
-			restriccionLimiteExtraccion = false;
-			console.log(restriccionLimiteExtraccion)
-		}
-	}
-
-	function respetaBilletes100(){
-		if (montoExtraerFloat % 100 != 0){
-			restriccionBilletes = true;
-			console.log(restriccionBilletes)
-		} else {
-			restriccionBilletes = false;
-			console.log(restriccionBilletes)
-		}
-	}			
+	
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
