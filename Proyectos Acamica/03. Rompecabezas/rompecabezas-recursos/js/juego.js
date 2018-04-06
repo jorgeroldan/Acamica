@@ -24,9 +24,11 @@ Podés ver su implementación en la ultima parte de este codigo. */
 function mostrarInstrucciones(instrucciones) {
     //COMPLETAR
     for (var i = 0; i < instrucciones.length; i++) {
-      mostrarInstruccionEnLista(instrucciones[i], lista-instrucciones)
+      mostrarInstruccionEnLista(instrucciones[i], "lista-instrucciones");
     }
-    }
+}
+
+mostrarInstrucciones(instrucciones);
 
 /* COMPLETAR: Crear función que agregue la última dirección al arreglo de movimientos
 y utilice actualizarUltimoMovimiento para mostrarlo en pantalla */

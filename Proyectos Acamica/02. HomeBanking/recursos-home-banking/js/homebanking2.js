@@ -45,16 +45,6 @@ function cambiarLimiteDeExtraccion() {
 	alert("Tu nuevo limite de extracción es: " + limiteExtraccion);
 }
 
-// Extracción sin restricciones
-
-// function extraerDinero() {
-// 		montoExtraer = prompt("Que cantidad de dinero quieres extraer?: ");
-// 		var saldoAnterior = saldoCuenta;
-// 		restarDinero(montoExtraer);
-// 		actualizarSaldoEnPantalla();
-// 		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
-// }
-
 
 //Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
 function extraerDinero() {
