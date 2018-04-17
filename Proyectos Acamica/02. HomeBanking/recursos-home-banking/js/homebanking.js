@@ -21,6 +21,10 @@ var precioTelefono = 425;
 var precioLuz = 210;
 var precioInternet = 570;
 
+// Declación de variables para transferencia
+var cantidadTransferir = 0;
+var cuentaAmiga1 = 1234567;
+var cuentaAmiga2 = 7654321;
 
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML
 cargarNombreEnPantalla();
@@ -35,6 +39,7 @@ function sumarDinero(montoDepositar){
 
 function restarDinero(montoExtraer){
 	saldoCuenta -= parseFloat(montoExtraer);
+	console.log("lo que sea");
 }
 
 //Funciones que tenes que completar
@@ -47,11 +52,11 @@ function cambiarLimiteDeExtraccion() {
 
 //Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
 function respetaSaldoCuenta(montoExtraer){
-	return (montoExtraer < saldoCuenta);
+	return (montoExtraer <= saldoCuenta);
 }
 
 function respetaLimiteExtraccion(montoExtraer){
-	return (montoExtraer < limiteExtraccion);
+	return (montoExtraer <= limiteExtraccion);
 }
 
 function respetaBilletes100(montoExtraer){
@@ -75,7 +80,7 @@ function extraerDinero() {
 		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
 	} 
 }
-	
+
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
@@ -87,24 +92,45 @@ function depositarDinero() {
 
 
 function pagarServicio() {
-	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua" + "\n 2. Telefono" + "\n 3. Luz" + "\n 4. Internet" );
-	console.log(servicioAPagar);
+	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua: " + precioAgua + "\n 2. Telefono: " + precioTelefono + "\n 3. Luz: " + precioLuz + "\n 4. Internet: " + precioInternet);
 	switch (parseInt(servicioAPagar)){
-		case 1: mostrarTexto ("El servicio de" + servicio1 + "tiene un costo de: " + precioAgua)
+		case 1: alert ("El servicio de" + servicio1 + " tiene un costo de: " + precioAgua)
+		restarDinero(precioAgua);
 		break;  
-		case 2: mostrarTexto ("El servicio de" + servicio2 + "tiene un costo de: " + precioTelefono)
+		case 2: alert ("El servicio de" + servicio2 + " tiene un costo de: " + precioTelefono)
+		restarDinero(precioTelefono);
 		break; 
-		case 3: mostrarTexto ("El servicio de" + servicio3 + "tiene un costo de: " + precioLuz)
+		case 3: alert ("El servicio de" + servicio3 + " tiene un costo de: " + precioLuz)
+		restarDinero(precioLuz);
 		break; 
-		case 4: mostrarTexto ("El servicio de" + servicio4 + "tiene un costo de: " + precioInternet)
+		case 4: alert ("El servicio de" + servicio4 + " tiene un costo de: " + precioInternet)
+		restarDinero(precioInternet);
 		break;
-		default: mostrarTexto ("No existe ningún otro servicio asociado")
+		default: alert ("No existe ningún otro servicio asociado")
 		break;  
 	} 
+	actualizarSaldoEnPantalla();
 }
 
 function transferirDinero() {
-
+	cantidadTransferir = prompt("Que cantidad de dinero quieres transferir?: ");
+	var cantidadTransferir = parseFloat(cantidadTransferir);
+	if (!respetaSaldoCuenta(cantidadTransferir)){
+		alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
+	} else {
+		var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n Cuenta Amiga 1 es: " + cuentaAmiga1 + "\n Cuenta Amiga 2 es: " + cuentaAmiga2);
+		switch (parseInt(cuentaDestino)){
+			case 1234567: alert ("La cuenta amiga 1 es: " + cuentaAmiga1 + " y el monto a transferir es: " + cantidadTransferir)
+			restarDinero(cantidadTransferir);
+			break;
+			case 7654321: alert ("La cuenta amiga 2 es: " + cuentaAmiga2 + " y el monto a transferir es: " + cantidadTransferir)
+			restarDinero(cantidadTransferir);
+			break;
+			default: alert ("No esta dada de alta como operación frecuente")
+			break;
+			}
+			actualizarSaldoEnPantalla();
+}
 }
 
 function iniciarSesion() {
