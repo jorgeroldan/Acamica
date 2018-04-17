@@ -1,4 +1,3 @@
-<style>
 
 * {
   font-family: "Ubuntu", sans-serif;
@@ -89,14 +88,6 @@ body.limte{
 #encabezado {
   clear: both;
 }
-/*
-#contenido {
-  margin-right: 30%;
-  margin-left: 30%;
-  background: #c0c0c0;
-  padding: 5px;
-  display: inline-block;
-}*/
 
 #contenidoprincipal {
   width:20%;
@@ -107,11 +98,6 @@ body.limte{
 
 }
 
-/*#contenidoprincipal.limite{
-  width: 70%;
-  widht-max:1500;
-}*/
-
 #contenidosecundario {
   width:60%;
   float: right;
@@ -119,11 +105,6 @@ body.limte{
   margin-right: 5%;
 }
 
-/*#contenidosecundario.limite{
-  width: 30%;
-  widht-max:1500;
-}
-*/
 #seccion {
   background: #FFFFFF;
   color:#808080;
@@ -188,16 +169,6 @@ body.limte{
   margin:auto;
 }
 
-/*    #contenido h1 {
-  background: #808080;
-  padding-left: 20px;
-  padding-top: 10px;
-  padding-bottom: 10px;
-  color: #fff;
-  text-transform: uppercase;
-  margin-top: 0px;
-  margin-bottom: 10px;
-}*/
 img {
   float : left;
   border-radius: 50%;
@@ -224,4 +195,3 @@ ul li {
   background: #c0c0c0;
 }
 
-</style>

@@ -1,0 +1,98 @@
+@import url('https://fonts.googleapis.com/css?family=Ubuntu');
+
+* {
+  font-family: "Ubuntu", sans-serif;
+}
+
+a {
+  text-decoration: none;
+}
+
+.navbar {
+  height: 36px;
+  background-color: #808080;
+  color: white;
+  width: 100vw;
+  position: fixed;
+  top: 0;
+  left: 0;
+  display: flex;
+  align-items: center;
+}
+
+.navbar a {
+  min-width: 72px;
+  height: 36px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 0 8px;
+  transition: all .5s;
+}
+
+.navbar svg {
+  height: 24px;
+  width: 24px;
+  transition: all .5s;
+}
+
+.navbar a.hold-right {
+  position: absolute;
+  right: 4px;
+}
+
+.navbar :not(svg):hover {
+  background-color: #2669ff;
+  padding-top: 16px;
+  height: 48px;
+  font-weight: 800;
+}
+
+.navbar :not(svg):active {
+  background-color: #00227b;
+  padding-top: 24px;
+  height: 72px;
+  font-weight: 800;
+}
+
+.navbar .hover-black:not(svg):hover {
+  background-color: #000;
+  padding-top: 24px;
+  height: 72px;
+}
+
+.navbar .hover-black:not(svg):active {
+  background-color: #000;
+  padding-top: 46px;
+  height: 96px;
+}
+
+.titulo {
+	color:#2669ff;
+}
+
+body {
+      background: #FFFFFF;
+    }
+    #contenido {
+      margin-right: 30%;
+      margin-left: 30%;
+      width: 40%;
+      background: #fff;
+      padding: 5px;
+      display: inline-block;
+    }
+    #contenido h1 {
+      background: #808080;
+      padding-left: 20px;
+      padding-top: 10px;
+      padding-bottom: 10px;
+      color: #fff;
+      text-transform: uppercase;
+      margin-top: 0px;
+      margin-bottom: 10px;
+    }
+    #contenido img {
+      float : left;
+    }

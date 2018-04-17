@@ -33,7 +33,7 @@ body {
 }
 
 
-/*.ancho{
+.ancho{
 	width: 80%;
 	width-max:1500;
 	margin-left: auto;
@@ -52,4 +52,4 @@ body {
 div p.centrado {
 	justify-content: center !important;
 
-}*/
+}
