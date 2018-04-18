@@ -34,15 +34,16 @@ var dato = 0;
 var claveValidacion = false;
 var statusReglaValidacion = 0;
 
+// Ejecutar función para inicio de sesión
 iniciarSesion();
 
-//Ejecución de las funciones que actualizan los valores de las variables en el HTML
+// Ejecución de las funciones que actualizan los valores de las variables en el HTML
 cargarNombreEnPantalla();
 actualizarSaldoEnPantalla();
 actualizarLimiteEnPantalla();
 
 
-//Funciones PASO 1
+// Funciones PASO 1
 function sumarDinero(montoDepositar){
 	saldoCuenta += parseFloat(montoDepositar);
 }
@@ -63,9 +64,7 @@ function cambiarLimiteDeExtraccion() {
 	} 
 	else {
 		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
-
 	}
-	
 }
 
 //Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
@@ -97,7 +96,7 @@ function extraerDinero() {
 				restarDinero(montoExtraer);
 				actualizarSaldoEnPantalla();
 				alert("Hiciste una extracción de: $" + montoExtraer + "\n" + "Saldo anterior: $" + saldoAnterior + "\n" + "Saldo actual: $" + saldoCuenta);
-	} 
+			} 
 	}
 }
 
@@ -112,6 +111,7 @@ function depositarDinero() {
 	}
 	else {
 		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+		console.log('este alert no debería salir, revisar')
 	}
 }
 
@@ -135,7 +135,7 @@ function pagarServicio() {
 		default: alert ("No existe ningún otro servicio asociado")
 		break;  
 	} 
-	actualizarSaldoEnPantalla();
+		actualizarSaldoEnPantalla();
 	}
 	else {
 		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
@@ -160,18 +160,18 @@ function transferirDinero() {
 			break;
 			}
 			actualizarSaldoEnPantalla();
-}
+	}
 }
 
 function iniciarSesion() {
 	var claveIngreso = prompt("Bienvenido/a " + nombreUsuario + " Por favor ingresa tu clave: ");
 	var claveIngreso = parseInt(claveIngreso);
 	if (claveIngreso === claveUsuario){
-		alert(nombreUsuario + ",  bienvenido/a a tu HomeBanking");
+		alert(nombreUsuario + ",  bienvenido/a ya puedes comenzar a realizar operaciones en tu HomeBanking");
 		return claveValidacion = true;
 	}
 	else {
-		alert("Acceso denegado, por motivos de seguridad tu cuenta ha sido bloqueada");
+		alert("Código incorrecto, tu dinero ha sido retenido por motivos de seguridad");
 		saldoCuenta = 0;
 		limiteExtraccion = 0;
 		nombreUsuario = "USUARIO BLOQUEADO";
@@ -180,7 +180,6 @@ function iniciarSesion() {
 	cargarNombreEnPantalla();
 	actualizarSaldoEnPantalla();
 	actualizarLimiteEnPantalla();
-
 }
 
 // Función para regla de validación
