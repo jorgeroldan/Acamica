@@ -147,13 +147,17 @@ body.limte{
   color:#808080;
   margin: 2% 2% 2% 0%;
   padding: 5px 10px 10px 10px;
-
+  padding-bottom: 20px;
 }
 
 
 #pie {
   clear: both;
   margin-top: 10%;
+}
+
+h6 .piefoto{
+  margin: center;
 }
 
 
