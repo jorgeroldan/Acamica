@@ -1,7 +1,7 @@
 //Declaración de variables
 
-var nombreUsuario = "Jorge"
-var saldoCuenta = 30000;
+var nombreUsuario = "Jorge Roldán"
+var saldoCuenta = 100000;
 var limiteExtraccion = 5000;
 var actualizarSaldoEnPantalla;
 var cargarNombreEnPantalla;
@@ -22,7 +22,6 @@ function cambiarLimiteDeExtraccion() {
 	parseInt(limiteExtraccion, 10);
 	actualizarLimiteEnPantalla();
 	alert("Tu nuevo limite de extracción es: " + limiteExtraccion);
-}
 }
 
 function sumarDinero(monto){

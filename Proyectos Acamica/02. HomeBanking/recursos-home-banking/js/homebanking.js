@@ -1,9 +1,9 @@
 // Declaración de variables para usuario
-var nombreUsuario = "Jorge"
+var nombreUsuario = "Jorge Roldán"
 var claveUsuario = 2018;
 
 //Declaración de variables para funciones principales
-var saldoCuenta = 30000;
+var saldoCuenta = 100000;
 var limiteExtraccion = 5000;
 var montoDepositar = 0;
 var restriccionSaldoCuenta = false;
@@ -109,10 +109,10 @@ function depositarDinero() {
 		actualizarSaldoEnPantalla();
 		alert("Hiciste un deposito de: $" + montoDepositar + "\n" + "Saldo anterior: $" + saldoAnterior + "\n" + "Saldo actual: $" + saldoCuenta);	
 	}
-	else {
-		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
-		console.log('este alert no debería salir, revisar')
-	}
+	// else {
+	// 	alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+	// 	console.log('este console.log no debería salir, revisar')
+	// }
 }
 
 
@@ -137,9 +137,9 @@ function pagarServicio() {
 	} 
 		actualizarSaldoEnPantalla();
 	}
-	else {
-		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
-	}
+	// else {
+	// 	alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+	// }
 }
 
 function transferirDinero() {
