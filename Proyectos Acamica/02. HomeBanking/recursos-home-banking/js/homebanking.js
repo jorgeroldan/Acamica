@@ -32,6 +32,7 @@ var cuentaAmiga2 = 7654321;
 // Declaración de variables de validación
 var dato = 0;
 var claveValidacion = false;
+var statusReglaValidacion = false;
 
 iniciarSesion();
 
@@ -48,16 +49,20 @@ function sumarDinero(montoDepositar){
 
 function restarDinero(montoExtraer){
 	saldoCuenta -= parseFloat(montoExtraer);
-	// console.log("lo que sea");
+	// console.log("probando probando 123");
 }
 
-// Función de verificación
-function verificacion(dato){	
-	if (isNaN(dato) || dato < 0 || dato === null){
+// Función para regla de validación
+function reglaValidacion(dato){	
+	if (isNaN(dato) || dato <= 0){
 		alert ("Ojo, has ingresado un dato invalido!" + "\n" + "Solamente puedes ingresar números enteros");
+		console.log("lalalalala datos que no pasan la regla");
+		statusReglaValidacion = false;
 		return false;
 	}
 	else {
+		statusReglaValidacion = true;
+		console.log("123 datos que si pasan la regla");
 		return true;
 	}
 }
@@ -68,7 +73,7 @@ function cambiarLimiteDeExtraccion() {
 	nuevoLimiteExtraccion = prompt("Ingrese un nuevo limite de extracción: ");
 	limiteExtraccion = parseFloat(nuevoLimiteExtraccion);
 	actualizarLimiteEnPantalla();
-	alert("Tu nuevo limite de extracción es: " + limiteExtraccion);
+	alert("Tu nuevo limite de extracción es: $" + limiteExtraccion);
 }
 
 //Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
@@ -87,7 +92,7 @@ function respetaBilletes100(montoExtraer){
 
 function extraerDinero() {
 	montoExtraerTexto = prompt("Que cantidad de dinero quieres extraer?: ");
-	if (verificacion(montoExtraerTexto)){
+	if (reglaValidacion(montoExtraerTexto)){
 			var montoExtraer = parseFloat(montoExtraerTexto);
 			if (!respetaSaldoCuenta(montoExtraer)){
 				alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
@@ -99,7 +104,7 @@ function extraerDinero() {
 				var saldoAnterior = saldoCuenta;	
 				restarDinero(montoExtraer);
 				actualizarSaldoEnPantalla();
-				alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+				alert("Hiciste una extracción de: $" + montoExtraer + "\n" + "Saldo anterior: $" + saldoAnterior + "\n" + "Saldo actual: $" + saldoCuenta);
 	} 
 	}
 }
@@ -107,32 +112,42 @@ function extraerDinero() {
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
-	var saldoAnterior = saldoCuenta;
-	sumarDinero(montoDepositar);
-	actualizarSaldoEnPantalla();
-	alert("Hiciste un deposito de: " + montoDepositar + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+	if (statusReglaValidacion === true){
+		var saldoAnterior = saldoCuenta;
+		sumarDinero(montoDepositar);
+		actualizarSaldoEnPantalla();
+		alert("Hiciste un deposito de: $" + montoDepositar + "\n" + "Saldo anterior: $" + saldoAnterior + "\n" + "Saldo actual: $" + saldoCuenta);	
+	}
+	else {
+		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+	}
 }
 
 
 function pagarServicio() {
-	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua: " + precioAgua + "\n 2. Telefono: " + precioTelefono + "\n 3. Luz: " + precioLuz + "\n 4. Internet: " + precioInternet);
-	switch (parseInt(servicioAPagar)){
-		case 1: alert ("El servicio de" + servicio1 + " tiene un costo de: " + precioAgua)
+	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua" + "\n 2. Telefono" + "\n 3. Luz" + "\n 4. Internet");
+	if (statusReglaValidacion === true){
+		switch (parseInt(servicioAPagar)){
+		case 1: alert ("El servicio de " + servicio1 + " tiene un costo de: $" + precioAgua)
 		restarDinero(precioAgua);
 		break;  
-		case 2: alert ("El servicio de" + servicio2 + " tiene un costo de: " + precioTelefono)
+		case 2: alert ("El servicio de " + servicio2 + " tiene un costo de: $" + precioTelefono)
 		restarDinero(precioTelefono);
 		break; 
-		case 3: alert ("El servicio de" + servicio3 + " tiene un costo de: " + precioLuz)
+		case 3: alert ("El servicio de " + servicio3 + " tiene un costo de: $" + precioLuz)
 		restarDinero(precioLuz);
 		break; 
-		case 4: alert ("El servicio de" + servicio4 + " tiene un costo de: " + precioInternet)
+		case 4: alert ("El servicio de " + servicio4 + " tiene un costo de: $" + precioInternet)
 		restarDinero(precioInternet);
 		break;
 		default: alert ("No existe ningún otro servicio asociado")
 		break;  
 	} 
 	actualizarSaldoEnPantalla();
+	}
+	else {
+		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+	}
 }
 
 function transferirDinero() {
@@ -141,15 +156,15 @@ function transferirDinero() {
 	if (!respetaSaldoCuenta(cantidadTransferir)){
 		alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
 	} else {
-		var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n Cuenta Amiga 1 es: " + cuentaAmiga1 + "\n Cuenta Amiga 2 es: " + cuentaAmiga2);
+		var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " + cuentaAmiga1 + "\n-Cuenta Amiga 2 es: " + cuentaAmiga2);
 		switch (parseInt(cuentaDestino)){
-			case 1234567: alert ("La cuenta amiga 1 es: " + cuentaAmiga1 + " y el monto a transferir es: " + cantidadTransferir)
+			case 1234567: alert ("El CBU de la cuenta amiga 1 es: " + cuentaAmiga1 + " y el monto a transferir es de: $" + cantidadTransferir)
 			restarDinero(cantidadTransferir);
 			break;
-			case 7654321: alert ("La cuenta amiga 2 es: " + cuentaAmiga2 + " y el monto a transferir es: " + cantidadTransferir)
+			case 7654321: alert ("El CBU de la cuenta amiga 2 es: " + cuentaAmiga2 + " y el monto a transferir es de: $" + cantidadTransferir)
 			restarDinero(cantidadTransferir);
 			break;
-			default: alert ("No esta dada de alta como operación frecuente")
+			default: alert ("Ese número de cuenta NO esta dada de alta como operación frecuente")
 			break;
 			}
 			actualizarSaldoEnPantalla();
@@ -157,18 +172,22 @@ function transferirDinero() {
 }
 
 function iniciarSesion() {
-	var claveIngreso = prompt("Bienvenido/a" + nombreUsuario + "Ingresa tu clave: ");
+	var claveIngreso = prompt("Bienvenido/a " + nombreUsuario + " Por favor ingresa tu clave: ");
+	var claveIngreso = parseInt(claveIngreso);
 	if (claveIngreso === claveUsuario){
-		alert(nombreUsuario + "Bienvenido/a a tu HomeBanking");
+		alert(nombreUsuario + ",  bienvenido/a a tu HomeBanking");
 		return claveValidacion = true;
 	}
 	else {
 		alert("Acceso denegado, por motivos de seguridad tu cuenta ha sido bloqueada");
-		return claveValidacion = false;
 		saldoCuenta = 0;
 		limiteExtraccion = 0;
-		nombreUsuario = "Usuario Bloqueado";
+		nombreUsuario = "USUARIO BLOQUEADO";
+		return claveValidacion = false;
 	}
+	cargarNombreEnPantalla();
+	actualizarSaldoEnPantalla();
+	actualizarLimiteEnPantalla();
 
 }
 
