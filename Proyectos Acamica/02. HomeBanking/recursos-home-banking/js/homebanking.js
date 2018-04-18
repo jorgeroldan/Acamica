@@ -1,5 +1,8 @@
-//Declaración de variables para funciones principales
+// Declaración de variables para usuario
 var nombreUsuario = "Jorge"
+var claveUsuario = 2018;
+
+//Declaración de variables para funciones principales
 var saldoCuenta = 30000;
 var limiteExtraccion = 5000;
 var montoDepositar = 0;
@@ -26,6 +29,12 @@ var cantidadTransferir = 0;
 var cuentaAmiga1 = 1234567;
 var cuentaAmiga2 = 7654321;
 
+// Declaración de variables de validación
+var dato = 0;
+var claveValidacion = false;
+
+iniciarSesion();
+
 //Ejecución de las funciones que actualizan los valores de las variables en el HTML
 cargarNombreEnPantalla();
 actualizarSaldoEnPantalla();
@@ -39,8 +48,20 @@ function sumarDinero(montoDepositar){
 
 function restarDinero(montoExtraer){
 	saldoCuenta -= parseFloat(montoExtraer);
-	console.log("lo que sea");
+	// console.log("lo que sea");
 }
+
+// Función de verificación
+function verificacion(dato){	
+	if (isNaN(dato) || dato < 0 || dato === null){
+		alert ("Ojo, has ingresado un dato invalido!" + "\n" + "Solamente puedes ingresar números enteros");
+		return false;
+	}
+	else {
+		return true;
+	}
+}
+
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
@@ -66,19 +87,21 @@ function respetaBilletes100(montoExtraer){
 
 function extraerDinero() {
 	montoExtraerTexto = prompt("Que cantidad de dinero quieres extraer?: ");
-	var montoExtraer = parseFloat(montoExtraerTexto);
-	if (!respetaSaldoCuenta(montoExtraer)){
-		alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
-	} else if (!respetaLimiteExtraccion(montoExtraer)){
-		alert("Estas excediendo tu limite diario de extracción: " + "$" + limiteExtraccion);
-	} else if (!respetaBilletes100(montoExtraer)){
-		alert("Este cajero solamente puede entregar billetes de 100 pesos argentinos");	
-	} else {
-		var saldoAnterior = saldoCuenta;	
-		restarDinero(montoExtraer);
-		actualizarSaldoEnPantalla();
-		alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
+	if (verificacion(montoExtraerTexto)){
+			var montoExtraer = parseFloat(montoExtraerTexto);
+			if (!respetaSaldoCuenta(montoExtraer)){
+				alert("No hay saldo en tu cuenta para extraer esa cantidad de dinero");	
+			} else if (!respetaLimiteExtraccion(montoExtraer)){
+				alert("Estas excediendo tu limite diario de extracción: " + "$" + limiteExtraccion);
+			} else if (!respetaBilletes100(montoExtraer)){
+				alert("Este cajero solamente puede entregar billetes de 100 pesos argentinos");	
+			} else {
+				var saldoAnterior = saldoCuenta;	
+				restarDinero(montoExtraer);
+				actualizarSaldoEnPantalla();
+				alert("Hiciste una extracción de: " + montoExtraer + "\n" + "Saldo anterior: " + saldoAnterior + "\n" + "Saldo actual: " + saldoCuenta);
 	} 
+	}
 }
 
 
@@ -134,6 +157,18 @@ function transferirDinero() {
 }
 
 function iniciarSesion() {
+	var claveIngreso = prompt("Bienvenido/a" + nombreUsuario + "Ingresa tu clave: ");
+	if (claveIngreso === claveUsuario){
+		alert(nombreUsuario + "Bienvenido/a a tu HomeBanking");
+		return claveValidacion = true;
+	}
+	else {
+		alert("Acceso denegado, por motivos de seguridad tu cuenta ha sido bloqueada");
+		return claveValidacion = false;
+		saldoCuenta = 0;
+		limiteExtraccion = 0;
+		nombreUsuario = "Usuario Bloqueado";
+	}
 
 }
 
