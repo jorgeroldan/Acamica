@@ -32,7 +32,7 @@ var cuentaAmiga2 = 7654321;
 // Declaración de variables de validación
 var dato = 0;
 var claveValidacion = false;
-var statusReglaValidacion = false;
+var statusReglaValidacion = 0;
 
 iniciarSesion();
 
@@ -52,28 +52,20 @@ function restarDinero(montoExtraer){
 	// console.log("probando probando 123");
 }
 
-// Función para regla de validación
-function reglaValidacion(dato){	
-	if (isNaN(dato) || dato <= 0){
-		alert ("Ojo, has ingresado un dato invalido!" + "\n" + "Solamente puedes ingresar números enteros");
-		console.log("lalalalala datos que no pasan la regla");
-		statusReglaValidacion = false;
-		return false;
-	}
-	else {
-		statusReglaValidacion = true;
-		console.log("123 datos que si pasan la regla");
-		return true;
-	}
-}
-
 
 //Funciones que tenes que completar
 function cambiarLimiteDeExtraccion() {
 	nuevoLimiteExtraccion = prompt("Ingrese un nuevo limite de extracción: ");
-	limiteExtraccion = parseFloat(nuevoLimiteExtraccion);
-	actualizarLimiteEnPantalla();
-	alert("Tu nuevo limite de extracción es: $" + limiteExtraccion);
+	if (claveValidacion === true){
+		limiteExtraccion = parseFloat(nuevoLimiteExtraccion);
+		actualizarLimiteEnPantalla();
+		alert("Tu nuevo limite de extracción es: $" + limiteExtraccion);
+	} 
+	else {
+		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+
+	}
+	
 }
 
 //Extración respetando los limites de extracción, saldo en la cuenta y billetes de $100
@@ -112,7 +104,7 @@ function extraerDinero() {
 
 function depositarDinero() {
 	montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
-	if (statusReglaValidacion === true){
+	if (reglaValidacion(montoDepositar) && claveValidacion === true){
 		var saldoAnterior = saldoCuenta;
 		sumarDinero(montoDepositar);
 		actualizarSaldoEnPantalla();
@@ -126,7 +118,7 @@ function depositarDinero() {
 
 function pagarServicio() {
 	var servicioAPagar = prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua" + "\n 2. Telefono" + "\n 3. Luz" + "\n 4. Internet");
-	if (statusReglaValidacion === true){
+	if (statusReglaValidacion === true && claveValidacion === true){
 		switch (parseInt(servicioAPagar)){
 		case 1: alert ("El servicio de " + servicio1 + " tiene un costo de: $" + precioAgua)
 		restarDinero(precioAgua);
@@ -190,6 +182,22 @@ function iniciarSesion() {
 	actualizarLimiteEnPantalla();
 
 }
+
+// Función para regla de validación
+function reglaValidacion(dato){	
+	if (isNaN(dato) || dato <= 0){
+		alert ("Ojo, has ingresado un dato invalido!" + "\n" + "Solamente puedes ingresar números enteros");
+		console.log("lalalalala datos que no pasan la regla");
+		statusReglaValidacion = false;
+		return false;
+	}
+	else {
+		statusReglaValidacion = true;
+		console.log("123 datos que si pasan la regla");
+		return true;
+	}
+}
+
 
 //Funciones que actualizan el valor de las variables en el HTML
 function cargarNombreEnPantalla() {
