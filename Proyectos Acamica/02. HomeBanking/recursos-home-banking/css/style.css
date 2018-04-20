@@ -21,6 +21,10 @@ body {
     vertical-align: text-bottom;
 }
 
+.card{
+    margin: center;
+}
+
 .align-left {
     display: flex;
     padding: 8px;

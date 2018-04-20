@@ -40,6 +40,7 @@ function login(){
 	showWelcomeUser();
 	showLoginButton();
 	showHomebanking()
+	showCard()
 	if (claveValidacion) {
 		alert(nombreUsuario + ",  bienvenido/a ya puedes comenzar a realizar operaciones en tu HomeBanking");
 	} 
@@ -276,6 +277,15 @@ function showHomebanking(){
         verHomebanking.style.display = 'block';
     } else {
         verHomebanking.style.display = 'none';
+    }
+}
+
+function showCard(){
+    var verCard = document.getElementById("card");
+    if (verCard.style.display === 'block') {
+        verCard.style.display = 'none';
+    } else {
+        verCard.style.display = 'block';
     }
 }
 
