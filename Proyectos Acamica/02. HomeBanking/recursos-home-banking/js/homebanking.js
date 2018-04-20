@@ -26,8 +26,7 @@ var precioInternet = 570;
 
 // Declación de variables para transferencia
 var cantidadTransferir = 0;
-var cuentaAmiga1 = 1234567;
-var cuentaAmiga2 = 7654321;
+var cuentasAmigas = [1234567, 7654321]
 
 // Declaración de variables de validación
 var dato = 0;
@@ -38,7 +37,10 @@ var statusReglaValidacion = 0;
 // Ejecutar función para inicio de sesión
 function login(){
 	iniciarSesion();
-	if (claveValidacion === true) {
+	showWelcomeUser();
+	showLoginButton();
+	showHomebanking()
+	if (claveValidacion) {
 		alert(nombreUsuario + ",  bienvenido/a ya puedes comenzar a realizar operaciones en tu HomeBanking");
 	} 
 	else {
@@ -174,12 +176,12 @@ function transferirDinero() {
 		if (!respetaSaldoCuenta(cantidadTransferir)){
 			alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
 		} else {
-			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " + cuentaAmiga1 + "\n-Cuenta Amiga 2 es: " + cuentaAmiga2);
+			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " + cuentasAmigas[0] + "\n-Cuenta Amiga 2 es: " + cuentasAmigas[1]);
 			switch (parseInt(cuentaDestino)){
-				case 1234567: alert ("El CBU de la cuenta amiga 1 es: " + cuentaAmiga1 + " y el monto a transferir es de: $" + cantidadTransferir)
+				case 1234567: alert ("El CBU de la cuenta amiga 1 es: " + cuentasAmigas[0] + " y el monto a transferir es de: $" + cantidadTransferir)
 				restarDinero(cantidadTransferir);
 				break;
-				case 7654321: alert ("El CBU de la cuenta amiga 2 es: " + cuentaAmiga2 + " y el monto a transferir es de: $" + cantidadTransferir)
+				case 7654321: alert ("El CBU de la cuenta amiga 2 es: " + cuentasAmigas[1] + " y el monto a transferir es de: $" + cantidadTransferir)
 				restarDinero(cantidadTransferir);
 				break;
 				default: alert ("Ese número de cuenta NO esta dada de alta como operación frecuente")
@@ -196,8 +198,23 @@ function transferirDinero() {
 
 
 function agregarCuentaFrecuente(){
-
+	if (claveValidacion){
+		var cuentaAmigaNueva = " ";
+		if (claveValidacion){
+			for (var i=0; i < cuentasAmigas.length;i++){
+				cuentaAmigaNueva += cuentasAmigas[i];
+			}
+				cuentaAmigaNueva = prompt("Deseas dar de alguna una nueva cuenta frecuente?")	
+				
+			}
+			else {
+		}
+	}	
+	else {
+		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+	}
 }
+
 
 function iniciarSesion() {
 	nombreUsuario = prompt("Ingresa tu nombre de usuario: ");
@@ -207,12 +224,10 @@ function iniciarSesion() {
 		return claveValidacion = true;
 	}
 	else {
-		// alert("Código incorrecto, por motivos de seguridad deberás recargar la página e intentar de nuevo");
 		saldoCuenta = 0;
 		limiteExtraccion = 0;
 		nombreUsuario = "USUARIO BLOQUEADO";
 		return claveValidacion = false;
-		console.log("estoy aqui pero no funciono");
 	}
 }
 
@@ -220,15 +235,48 @@ function iniciarSesion() {
 function reglaValidacion(dato){	
 	if (isNaN(dato) || dato <= 0){
 		alert ("Ojo, has ingresado un dato invalido!" + "\n" + "Solamente puedes ingresar números enteros");
-		console.log("lalalalala datos que no pasan la regla");
-		// statusReglaValidacion = false;
 		return false;
 	}
 	else {
-		// statusReglaValidacion = true;
-		console.log("123 datos que si pasan la regla");
 		return true;
 	}
+}
+
+//Funcion antes y después de login
+function showWelcomeUser(){
+    var verNombre = document.getElementById("nombre");
+    if (verNombre.style.display === 'none') {
+        verNombre.style.display = 'block';
+    } else {
+        verNombre.style.display = 'none';
+    }
+}
+
+// function showAvatar(){
+//     var verAvatar = document.getElementByClass("avatar");
+//     if (verAvatar.style.display === 'none') {
+//         verAvatar.style.display = 'block';
+//     } else {
+//         verAvatar.style.display = 'none';
+//     }
+// }
+
+function showLoginButton(){
+    var verLogin = document.getElementById("login");
+    if (verLogin.style.display === 'none') {
+        verLogin.style.display = 'block';
+    } else {
+        verLogin.style.display = 'none';
+    }
+}
+
+function showHomebanking(){
+    var verHomebanking = document.getElementById("homebanking");
+    if (verHomebanking.style.display === 'none') {
+        verHomebanking.style.display = 'block';
+    } else {
+        verHomebanking.style.display = 'none';
+    }
 }
 
 

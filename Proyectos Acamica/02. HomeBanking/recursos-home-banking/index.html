@@ -4,19 +4,27 @@
     <meta charset="UTF-8">
     <link rel="stylesheet" type="text/css" href="css/style.css">
     <link href="https://fonts.googleapis.com/css?family=Source+Sans+Pro" rel="stylesheet">
+    <!-- Material Design CDN -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://code.getmdl.io/1.3.0/material.blue_grey-cyan.min.css" />
+    <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Roboto:300,400,500,700" type="text/css">
     <title>HOME BANKING</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+
   </head>
   <body>
     <div class="header">
       <img class="logo" src="img/logo.png"/>
       <div class="align-left">
-        <button id="login" class="iniciarsesion" onclick="login()">Iniciar Sesión</button>
-        <span id="nombre">Bienvenido/a</span>
-        <img class="avatar" src="img/avatar.svg"/>
+        <button id="login" style="display: block" onclick="login()" class="mdl-button mdl-js-button mdl-button--raised mdl-button--colored">Iniciar Sesión</button>
+        <span id="nombre" style="display: none">Bienvenido/a</span>
+        <img class="avatar" style="display: none" src="img/avatar.svg"/>
       </div>
     </div>
-    <div class="white-container">
+
+    <div id="homebanking" style="display: none">
+      <div class="white-container">
       <div class="menu-container">
         <h1 class="tu-cuenta">Tu cuenta</h1>
         <button class="links" onclick="extraerDinero()">Extraer dinero</button>
@@ -34,6 +42,10 @@
         </div>
       </div>
     </div>
+      
+    </div>
+    
   </body>
   <script src="js/homebanking.js"></script>
+  <script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
 </html>
