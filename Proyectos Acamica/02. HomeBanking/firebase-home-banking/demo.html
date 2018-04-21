@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Demo</title>
+
+	<link rel="import" href="/bower_components/polymer/polymer.html">
+    <link rel="import" href="/bower_components/login-fire/login-fire-social.html">
+    <link rel="import" href="/bower_components/login-fire/login-fire-form.html">
+    <script src="/bower_components/webcomponentsjs/webcomponents-loader.js"></script>
+</head>
+<body>
+	
+
+	<!-- Login FireBase -->
+    <firebase-app
+      name="social"
+      api-key="AIzaSyBPuhyIWQae40xg0vkl1YfTx6lcsEc8IyI"
+      auth-domain="homebanking-32700.firebaseapp.com"
+      database-url="https://homebanking-32700.firebaseio.com">
+    </firebase-app>
+
+    <login-fire-social
+      app-name="social"
+      providers="google, facebook, twitter, github, anonymous" 
+      user="{{user}}"
+      signed-in="{{signedIn}}">
+    </login-fire-social>
+
+    <firebase-app
+      name="email"
+      api-key="AIzaSyBPuhyIWQae40xg0vkl1YfTx6lcsEc8IyI"
+      auth-domain="homebanking-32700.firebaseapp.com"
+      database-url="https://homebanking-32700.firebaseio.com">
+    </firebase-app>
+
+    <login-fire-form
+      app-name="email"
+      user="{{user}}"
+      signed-in="{{signedIn}}">
+    </login-fire-form>
+
+
+</body>
+	<script src="js/homebanking.js"></script>
+	<script defer src="https://code.getmdl.io/1.3.0/material.min.js"></script>
+
+
+	<script src="https://www.gstatic.com/firebasejs/4.13.0/firebase.js"></script>
+	<script>
+	// Initialize Firebase
+	var config = {
+	  apiKey: "AIzaSyBPuhyIWQae40xg0vkl1YfTx6lcsEc8IyI",
+	  authDomain: "homebanking-32700.firebaseapp.com",
+	  databaseURL: "https://homebanking-32700.firebaseio.com",
+	  projectId: "homebanking-32700",
+	  storageBucket: "homebanking-32700.appspot.com",
+	  messagingSenderId: "940091348551"
+	};
+	firebase.initializeApp(config);
+	</script>
+</html>
