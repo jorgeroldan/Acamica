@@ -1,0 +1,100 @@
+<link rel="import" href="../../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../../bower_components/login-fire/login-fire-social.html">
+<link rel="import" href="/bower_components/login-fire/login-fire.html">
+<!-- <link rel="stylesheet" type="text/css" href="css/estiloslanding.css"> -->
+
+<dom-module id="login-app-app">
+  <template>
+    <style>
+      :host {
+        display: block;
+      }
+    </style>
+    
+    <content>
+     <!--  <h2>Bienvenido/a [[prop1]]!</h2> -->
+    </content>
+
+
+    <firebase-app name="allSocialDarkDemo" api-key="AIzaSyBPuhyIWQae40xg0vkl1YfTx6lcsEc8IyI" auth-domain="homebanking-32700.firebaseio.com" database-url="https://homebanking-32700.firebaseio.com">
+    </firebase-app>
+    <login-fire flat show-sign-up="{{showSignUp}}" app-name="allSocialDarkDemo" providers="google, facebook, twitter, github, anonymous" debug mini class="custom"></login-fire>
+    
+    <style is="custom-style">
+    login-fire.custom {
+      --login-fire-background-color: #2a333d;
+      --login-fire-divider-color: #fff;
+      --login-fire-error-msg-color:#e84a5f;
+      --login-fire-reset-password-color: #fff;
+      --login-fire-reset-password-hover-color: #fecea8;
+      --paper-input-container-color: #fff;
+      --paper-input-container-focus-color: #fecea8;
+      --paper-input-container-input-color: white;
+      --login-fire-progress-active-color: orangered;
+      --login-fire-progress-container-color: #2a363b;
+      --login-fire-form: {
+        width: 400px;
+      };
+      --login-fire-button-facebook: {
+        --login-fire-progress-active-color: orangered;
+        --login-fire-progress-container-color: blue;
+      };
+      --login-fire-form-toggle: {
+        color: gray;
+        text-align: left;
+      };
+      --login-fire-button: {
+        min-width: 150px;
+      };
+      --login-fire-btn-signup: {
+        color: white;
+        background: #ff847c;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-top: 10px;
+        margin-left: 0px;
+        height: 40px;
+        position: relative;
+        top:15px;
+      };
+      --login-fire-btn-signin: {
+        color: white;
+        background: gray;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-top: 10px;
+        margin-left: 0px;
+        height: 40px;
+        position: relative;
+        top:-5px;
+      };
+      --login-fire-btn-signout: {
+        color: white;
+        background: #e84a5f;
+        height: 40px;
+      };
+    }
+    </style>
+
+  </template>
+
+  <script>
+    /**
+     * @customElement
+     * @polymer
+     */
+    class LoginAppApp extends Polymer.Element {
+      static get is() { return 'login-app-app'; }
+      static get properties() {
+        return {
+          prop1: {
+            type: String,
+            value: 'Acamica'
+          }
+        };
+      }
+    }
+
+    window.customElements.define(LoginAppApp.is, LoginAppApp);
+  </script>
+</dom-module>

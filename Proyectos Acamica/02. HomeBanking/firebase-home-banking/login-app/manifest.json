@@ -1,0 +1,6 @@
+{
+  "name": "login-app",
+  "short_name": "login-app",
+  "start_url": "/",
+  "display": "standalone"
+}

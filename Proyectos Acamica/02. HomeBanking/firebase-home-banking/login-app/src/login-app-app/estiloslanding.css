@@ -1,0 +1,55 @@
+<style is="custom-style">
+    login-fire.custom {
+      --login-fire-background-color: #2a363b;
+      --login-fire-divider-color: #a58e7a;
+      --login-fire-error-msg-color:#e84a5f;
+      --login-fire-reset-password-color: #a58e7a;
+      --login-fire-reset-password-hover-color: #fecea8;
+      --paper-input-container-color: #a58e7a;
+      --paper-input-container-focus-color: #fecea8;
+      --paper-input-container-input-color: white;
+      --login-fire-progress-active-color: orangered;
+      --login-fire-progress-container-color: #2a363b;
+      --login-fire-form: {
+        width: 400px;
+      };
+      --login-fire-button-facebook: {
+        --login-fire-progress-active-color: orangered;
+        --login-fire-progress-container-color: blue;
+      };
+      --login-fire-form-toggle: {
+        color: #a58e7a;
+        text-align: left;
+      };
+      --login-fire-button: {
+        min-width: 150px;
+      };
+      --login-fire-btn-signup: {
+        color: white;
+        background: #ff847c;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-top: 10px;
+        margin-left: 0px;
+        height: 40px;
+        position: relative;
+        top:15px;
+      };
+      --login-fire-btn-signin: {
+        color: white;
+        background: #99b898;
+        padding-left: 25px;
+        padding-right: 25px;
+        margin-top: 10px;
+        margin-left: 0px;
+        height: 40px;
+        position: relative;
+        top:-5px;
+      };
+      --login-fire-btn-signout: {
+        color: white;
+        background: #e84a5f;
+        height: 40px;
+      };
+    }
+    </style>
