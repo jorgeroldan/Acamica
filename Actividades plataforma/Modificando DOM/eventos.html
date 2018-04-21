@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+</head>
+<body>
+
+<!-- <div id="colorido">Cambiar Color</div> -->
+<input type="text" name="algo" value="" />
+	
+</body>
+<script>
+
+	document.getElementsByName("algo")[0].addEventListener('change', mostrarMensaje);
+
+	function mostrarMensaje(e){
+		alert("Cambio el valor a: " + e.target.value + "!");
+		console.log('lalalala')
+	}
+	
+// var el = document.getElementById("colorido");
+
+// el.addEventListener("mouseover", colorNaranja); 
+// el.addEventListener("mousedown", colorAzul);
+// el.addEventListener('mouseup', colorRojo);
+
+// function colorNaranja(e){
+// 	e.target.style.backgroundColor = 'naranja';
+// }
+// function colorAzul(e){
+// 	e.target.style.backgroundColor = 'azul';
+// }
+// function colorRojo(e){
+// 	e.target.style.backgroundColor = 'rojo';
+// }
+
+
+</script>
+</html>

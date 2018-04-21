@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>Lista dinámica</title>
+</head>
+<body>
+<!-- 	<ul id="lista-supermercado">
+		<li>item x</li>
+	</ul> -->
+
+<div id="colorido">Cambiar Color</div>
+
+</body>
+
+<script>
+	// function newElement(){
+	// 	var productos = ['manteca', 'lechuga','vino', 'tomate', 'lechuga', 'jamón'];
+	// 	var padre = document.getElementById("lista-supermercado");
+	// 	for(var i=0; i<productos.length;i++){	
+	// 		var nuevoLi = document.createElement('li');
+	// 		nuevoLi.textContent = productos[i];
+	// 		padre.appendChild(nuevoLi);
+	// 	}
+	// }
+
+var el = document.getElementById('colorido');
+
+el.addEventListener("mouseover", colorNaranja); 
+el.addEventListener("mousedown", colorAzul);
+el.addEventListener('mouseup', colorRojo);
+
+function colorNaranja(e){
+	e.target.style.backgroundColor = "orange";
+	console.log('naranja');
+}
+function colorAzul(e){
+	e.target.style.backgroundColor = 'blue';
+	console.log('azul');
+}
+function colorRojo(e){
+	e.target.style.backgroundColor = 'red';
+	console.log('rojo');
+}
+
+
+	
+
+</script>
+</html>

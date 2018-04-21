@@ -41,6 +41,7 @@ function login(){
 	showLoginButton();
 	showHomebanking()
 	showCard()
+	showAvatar()
 	if (claveValidacion) {
 		alert(nombreUsuario + ",  bienvenido/a ya puedes comenzar a realizar operaciones en tu HomeBanking");
 	} 
@@ -243,7 +244,7 @@ function reglaValidacion(dato){
 	}
 }
 
-//Funcion antes y después de login
+//Funciones antes y después de login
 function showWelcomeUser(){
     var verNombre = document.getElementById("nombre");
     if (verNombre.style.display === 'none') {
@@ -253,14 +254,14 @@ function showWelcomeUser(){
     }
 }
 
-// function showAvatar(){
-//     var verAvatar = document.getElementByClass("avatar");
-//     if (verAvatar.style.display === 'none') {
-//         verAvatar.style.display = 'block';
-//     } else {
-//         verAvatar.style.display = 'none';
-//     }
-// }
+function showAvatar(){
+    var verAvatar = document.getElementById("icono");
+    if (verAvatar.style.display === 'none') {
+        verAvatar.style.display = 'block';
+    } else {
+        verAvatar.style.display = 'none';
+    }
+}
 
 function showLoginButton(){
     var verLogin = document.getElementById("login");
