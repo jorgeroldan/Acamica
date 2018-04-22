@@ -1,5 +1,5 @@
 // Declaración de variables para usuario
-var nombreUsuario = "Jorge Roldán"
+var nombreUsuario = "roldan21@gmail.com"
 var claveUsuario = 2018;
 
 //Declaración de variables para funciones principales
@@ -32,6 +32,7 @@ var cuentasAmigas = [1234567, 7654321]
 var dato = 0;
 var claveValidacion = false;
 var statusReglaValidacion = 0;
+var input = claveValidacion;
 
 
 // Ejecutar función para inicio de sesión
@@ -43,7 +44,9 @@ function login(){
 	showCard()
 	showAvatar()
 	if (claveValidacion) {
-		alert("Bienvenido/a " + nombreUsuario + ", ya puedes comenzar a realizar operaciones en tu HomeBanking");
+		// alert("Bienvenido/a " + nombreUsuario + ", ya puedes comenzar a realizar operaciones en tu HomeBanking");
+		document.getElementById("myButton").onclick = function () {
+        location.href = "#logo";
 	} 
 	else {
 		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
