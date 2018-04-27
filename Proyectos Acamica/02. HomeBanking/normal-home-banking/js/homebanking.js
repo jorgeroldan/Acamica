@@ -177,6 +177,7 @@ function transferirDinero() {
 			alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
 		} else {
 			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " + cuentasAmigas[0] + "\n-Cuenta Amiga 2 es: " + cuentasAmigas[1] + "\n-Cuenta Amiga 3 es: " + cuentasAmigas[2]);
+			// HAcer un for para recorrer las cuentas y saber si exsite. 
 			switch (parseInt(cuentaDestino)){
 				case 1234567: alert ("El CBU de la cuenta amiga 1 es: " + cuentasAmigas[0] + " y el monto a transferir es de: $" + cantidadTransferir)
 				restarDinero(cantidadTransferir);
@@ -201,14 +202,15 @@ function transferirDinero() {
 function agregarCuentaFrecuente(){
 	if (claveValidacion){
 		var cuentaAmigaNueva = " ";
-		for (var i=0; i < cuentasAmigas.length;i++){
-			cuentaAmigaNueva += cuentasAmigas[i];
-		}
+		// for (var i=0; i < cuentasAmigas.length;i++){
+		// 	cuentaAmigaNueva += cuentasAmigas[i];
+		// }
 		cuentaAmigaNueva = prompt("Ingresa los 7 dígitos de la nueva cuenta frecuente")	
 		if(reglaValidacion(cuentaAmigaNueva)){
 			if (confirm('CONFIRMA que el número de la cuenta ingresada es: ' + cuentaAmigaNueva)){
 				cuentasAmigas.push(cuentaAmigaNueva);
 				console.log(cuentasAmigas);
+				// incrustarCuentaFrecuente();
 			}	
 			else {
 				alert ('Cancelaste esta operacion y no se pudo agregar la nueva cuenta. Intenta de nuevo');
@@ -219,6 +221,10 @@ function agregarCuentaFrecuente(){
 		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
 	}
 }
+
+// function incrustarCuentaFrecuente(){
+// 	cuentasAmigas
+// }
 
 function iniciarSesion() {
 	nombreUsuario = prompt("Ingresa tu nombre de usuario: ");
