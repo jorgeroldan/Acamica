@@ -33,7 +33,6 @@ var dato = 0;
 var claveValidacion = false;
 var statusReglaValidacion = 0;
 
-
 // Ejecutar función para inicio de sesión
 function login(){
 	iniciarSesion();
@@ -48,13 +47,14 @@ function login(){
 	else {
 		alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
 	}
+
 // Ejecución de las funciones que actualizan los valores de las variables en el HTML
 	cargarNombreEnPantalla();
 	actualizarSaldoEnPantalla();
 	actualizarLimiteEnPantalla();
 }
 
-// Funciones PASO 1
+// Funciones sumar y restar dinero
 function sumarDinero(montoDepositar){
 	saldoCuenta += parseFloat(montoDepositar);
 }
@@ -98,7 +98,7 @@ function respetaBilletes100(montoExtraer){
 	return (montoExtraer % 100 == 0);
 }
 
-
+//FUNCIÓN PARA EXTRAER DINERO
 function extraerDinero() {
 		if (claveValidacion){
 			montoExtraerTexto = prompt("Que cantidad de dinero quieres extraer?: ");
@@ -124,6 +124,7 @@ function extraerDinero() {
 		}
 }
 
+// FUNCIÓN PARA DEPOSITAR DINERO
 function depositarDinero() {
 		if (claveValidacion){
 			montoDepositar = prompt("Que cantidad de dinero quieres depositar?: ");
@@ -133,33 +134,32 @@ function depositarDinero() {
 			actualizarSaldoEnPantalla();
 			alert("Hiciste un deposito de: $" + montoDepositar + "\n" + "Saldo anterior: $" + saldoAnterior + "\n" + "Saldo actual: $" + saldoCuenta);	
 			}
-
 		}
 		else {
 			alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
 		}
 }
 
-
+//FUNCTIÓN PARA PAGAR SERVICIO
 function pagarServicio() {
 	if (claveValidacion){
 		var servicioAPagar = parseInt(prompt("Ingrese el número que corresponde con el servicio que desea pagar: " + "\n 1. Agua" + "\n 2. Telefono" + "\n 3. Luz" + "\n 4. Internet"));
 		if (reglaValidacion(servicioAPagar)){
 		switch (parseInt(servicioAPagar)){
-		case 1: alert ("El servicio de " + servicio1 + " tiene un costo de: $" + precioAgua)
-		restarDinero(precioAgua);
-		break;  
-		case 2: alert ("El servicio de " + servicio2 + " tiene un costo de: $" + precioTelefono)
-		restarDinero(precioTelefono);
-		break; 
-		case 3: alert ("El servicio de " + servicio3 + " tiene un costo de: $" + precioLuz)
-		restarDinero(precioLuz);
-		break; 
-		case 4: alert ("El servicio de " + servicio4 + " tiene un costo de: $" + precioInternet)
-		restarDinero(precioInternet);
-		break;
-		default: alert ("No existe ningún otro servicio asociado")
-		break;  
+			case 1: alert ("El servicio de " + servicio1 + " tiene un costo de: $" + precioAgua)
+			restarDinero(precioAgua);
+			break;  
+			case 2: alert ("El servicio de " + servicio2 + " tiene un costo de: $" + precioTelefono)
+			restarDinero(precioTelefono);
+			break; 
+			case 3: alert ("El servicio de " + servicio3 + " tiene un costo de: $" + precioLuz)
+			restarDinero(precioLuz);
+			break; 
+			case 4: alert ("El servicio de " + servicio4 + " tiene un costo de: $" + precioInternet)
+			restarDinero(precioInternet);
+			break;
+			default: alert ("No existe ningún otro servicio asociado")
+			break;  
 	} 
 		actualizarSaldoEnPantalla();
 	}
@@ -169,6 +169,34 @@ function pagarServicio() {
 	}
 }
 
+// FUNCIÓN TRANSFERIR DINERO UTILIZANDO SWITCH --------> REMPLAZADA POR LA FUNCIÓN DE ABAJO CON UN FOR
+	// function transferirDinero() {
+	// 	if (claveValidacion){
+	// 		cantidadTransferir = prompt("Que cantidad de dinero quieres transferir?: ");
+	// 		var cantidadTransferir = parseFloat(cantidadTransferir);
+	// 		if (!respetaSaldoCuenta(cantidadTransferir)){
+	// 			alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
+	// 		} else {
+	// 			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " +  cuentasAmigas[0]  + "\n-Cuenta Amiga 2 es: " + cuentasAmigas[1] + "\n-Cuenta Amiga 3 es: " + cuentasAmigas[2]);
+	// 			switch (parseInt(cuentaDestino)){
+	// 				case 1234567: confirm ("Desear realizar una transferencia al CBU de la cuenta amiga 1: " + cuentasAmigas[0] + " por el monto de: $" + cantidadTransferir)
+	// 				restarDinero(cantidadTransferir);
+	// 				break;
+	// 				case 7654321: confirm ("Desear realizar una transferencia al CBU de la cuenta amiga 2: " + cuentasAmigas[1] + " por  el monto de: $" + cantidadTransferir)
+	// 				restarDinero(cantidadTransferir);
+	// 				break;
+	// 				default: alert ("Ese número de cuenta NO esta dada de alta como operación frecuente")
+	// 				break;
+	// 				}
+	// 				actualizarSaldoEnPantalla();
+	// 		}
+	// 	}
+	// 	else {
+	// 			alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+	// 	}
+	// }
+
+//FUNCIÓN PARA TRANSFERIR DINERO A LAS CUENTAS FRECUENTES
 function transferirDinero() {
 	if (claveValidacion){
 		cantidadTransferir = prompt("Que cantidad de dinero quieres transferir?: ");
@@ -176,41 +204,29 @@ function transferirDinero() {
 		if (!respetaSaldoCuenta(cantidadTransferir)){
 			alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
 		} else {
-			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " + cuentasAmigas[0] + "\n-Cuenta Amiga 2 es: " + cuentasAmigas[1] + "\n-Cuenta Amiga 3 es: " + cuentasAmigas[2]);
-			// HAcer un for para recorrer las cuentas y saber si exsite. 
-			switch (parseInt(cuentaDestino)){
-				case 1234567: alert ("El CBU de la cuenta amiga 1 es: " + cuentasAmigas[0] + " y el monto a transferir es de: $" + cantidadTransferir)
-				restarDinero(cantidadTransferir);
-				break;
-				case 7654321: alert ("El CBU de la cuenta amiga 2 es: " + cuentasAmigas[1] + " y el monto a transferir es de: $" + cantidadTransferir)
-				restarDinero(cantidadTransferir);
-				break;
-				default: alert ("Ese número de cuenta NO esta dada de alta como operación frecuente")
-				break;
-				}
-				actualizarSaldoEnPantalla();
+			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " +  cuentasAmigas[0] + "\n-Cuenta Amiga 2 es: " + cuentasAmigas[1] + "\n-Cuenta Amiga 3 es: " + cuentasAmigas[2]);
+			for(var i=0; i < cuentasAmigas.length; i++){
+				cuentasAmigas[i] === cuentaDestino; 
+			}
+			restarDinero(cantidadTransferir);
+			actualizarSaldoEnPantalla();
 		}
 	}
 	else {
 			alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
-
 	}
 }
 
 
-
+// FUNCIÓN PARA AGREGAR CUENTA FRECUENTE MEDIANTE UN PUSH AL ARRAY
 function agregarCuentaFrecuente(){
 	if (claveValidacion){
 		var cuentaAmigaNueva = " ";
-		// for (var i=0; i < cuentasAmigas.length;i++){
-		// 	cuentaAmigaNueva += cuentasAmigas[i];
-		// }
 		cuentaAmigaNueva = prompt("Ingresa los 7 dígitos de la nueva cuenta frecuente")	
 		if(reglaValidacion(cuentaAmigaNueva)){
 			if (confirm('CONFIRMA que el número de la cuenta ingresada es: ' + cuentaAmigaNueva)){
 				cuentasAmigas.push(cuentaAmigaNueva);
 				console.log(cuentasAmigas);
-				// incrustarCuentaFrecuente();
 			}	
 			else {
 				alert ('Cancelaste esta operacion y no se pudo agregar la nueva cuenta. Intenta de nuevo');
@@ -222,10 +238,7 @@ function agregarCuentaFrecuente(){
 	}
 }
 
-// function incrustarCuentaFrecuente(){
-// 	cuentasAmigas
-// }
-
+//FUNCIÓN PARA INICIAR SESIÓN
 function iniciarSesion() {
 	nombreUsuario = prompt("Ingresa tu nombre de usuario: ");
 	var claveIngreso = prompt("Hola " + nombreUsuario +"," + "\nPor favor ingresa tu clave: ");
@@ -241,7 +254,7 @@ function iniciarSesion() {
 	}
 }
 
-// Función para regla de validación
+// REGLA DE VALIDACIÓN DE DATOS 
 function reglaValidacion(dato){	
 	if (isNaN(dato) || dato <= 0){
 		alert ("Ojo, has ingresado un dato invalido!" + "\n" + "Solamente puedes ingresar números enteros");
@@ -252,17 +265,8 @@ function reglaValidacion(dato){
 	}
 }
 
-// function reglaValidacion2(dato){
-// 	if (dato.toString().length=7){
-// 		return true
-// 	}
-// 	else {
-// 		alert ("Ojo, la cantidad de digitos de la cuenta debe ser de 7");
-// 		return false
-// 	}	
-// }
 
-//Funciones antes y después de login
+//FUNCIONES DEL DISPLAY ANTES Y DESPUÉS DE LOGIN
 function showWelcomeUser(){
     var verNombre = document.getElementById("nombre");
     if (verNombre.style.display === 'none') {
