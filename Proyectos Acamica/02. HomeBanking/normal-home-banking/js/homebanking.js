@@ -200,11 +200,11 @@ function pagarServicio() {
 function recorrerCuentasFrecuentes(){
 	var texto = '';
 	for(var i=0; i < cuentasAmigas.length; i++){
-		var texto =+ "Cuenta "+(i+1)+": "+cuentasAmigas[i]+" \n"
+		console.log(i);
+		var texto = texto + "Cuenta "+(i+1)+": "+cuentasAmigas[i]+" \n" ;
 		var largo = cuentasAmigas.length;
-		return [texto, largo];
 	}
-	console.log(texto, largo);
+	return [texto, largo];
 }
 
 // FUNCIÓN PARA VALIDAR QUE LA CUENTA FRECUENTE ESTA DADA DE ALTA EN EL ARREGLO
@@ -215,6 +215,17 @@ function validacionCuentaFrecuente(dato){
 		}
 	}
 }
+
+// FUNCIÓN PARA VALIDAR QUE LA CUENTA NUEVA TIENE 7 Dígitos
+function cuentaDeSiete(dato){
+	if (7 === dato.length){
+		return true;
+	}
+	else {
+		alert ('Recuerda que la cuenta debe tener 7 dígitos\nIntenta de nuevo!');
+		}
+}
+
 
 //FUNCIÓN PARA TRANSFERIR DINERO A LAS CUENTAS FRECUENTES
 function transferirDinero() {
@@ -255,7 +266,7 @@ function agregarCuentaFrecuente(){
 	if (claveValidacion){
 		var cuentaAmigaNueva = " ";
 		cuentaAmigaNueva = prompt("Ingresa los 7 dígitos de la nueva cuenta frecuente")	
-		if(reglaValidacion(cuentaAmigaNueva)){
+		if(reglaValidacion(cuentaAmigaNueva) && cuentaDeSiete(cuentaAmigaNueva)){
 			if (confirm('CONFIRMA que el número de la cuenta ingresada es: ' + cuentaAmigaNueva)){
 				cuentasAmigas.push(cuentaAmigaNueva);
 				console.log(cuentasAmigas);

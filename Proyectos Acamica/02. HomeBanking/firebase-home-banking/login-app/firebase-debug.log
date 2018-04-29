@@ -1,0 +1,40 @@
+[debug] [2018-04-29T15:47:26.535Z] ----------------------------------------------------------------------
+[debug] [2018-04-29T15:47:26.542Z] Command:       /usr/local/bin/node /usr/local/bin/firebase init login-app
+[debug] [2018-04-29T15:47:26.543Z] CLI Version:   3.18.4
+[debug] [2018-04-29T15:47:26.543Z] Platform:      darwin
+[debug] [2018-04-29T15:47:26.543Z] Node Version:  v6.10.3
+[debug] [2018-04-29T15:47:26.544Z] Time:          Sun Apr 29 2018 12:47:26 GMT-0300 (-03)
+[debug] [2018-04-29T15:47:26.544Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-04-29T15:47:26.564Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-04-29T15:47:26.564Z] > authorizing via signed-in user
+[info] 
+     🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥     🔥🔥🔥     🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥     🔥🔥 🔥🔥       🔥🔥     🔥🔥  🔥🔥   🔥🔥  🔥🔥       🔥🔥
+     🔥🔥🔥🔥🔥🔥    🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥   🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥
+     🔥🔥        🔥🔥  🔥🔥    🔥🔥  🔥🔥       🔥🔥     🔥🔥 🔥🔥     🔥🔥       🔥🔥 🔥🔥
+     🔥🔥       🔥🔥🔥🔥 🔥🔥     🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥 🔥🔥🔥🔥🔥🔥🔥🔥  🔥🔥     🔥🔥  🔥🔥🔥🔥🔥🔥  🔥🔥🔥🔥🔥🔥🔥🔥
+
+You're about to initialize a Firebase project in this directory:
+
+  /Users/Roldan/Desktop/ACAMICA/Proyectos Acamica/02. HomeBanking/firebase-home-banking/login-app
+
+[info] 
+=== Project Setup
+[info] 
+[info] First, let's associate this project directory with a Firebase project.
+[info] You can create multiple project aliases by running firebase use --add, 
+[info] but for now we'll just set up a default project.
+[info] 
+[debug] [2018-04-29T15:47:26.576Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects  
+  
+ Sun Apr 29 2018 12:47:26 GMT-0300 (-03)
+[debug] [2018-04-29T15:47:27.827Z] <<< HTTP RESPONSE 200
+[info] 
+=== Login-app Setup
+[debug] [2018-04-29T15:47:32.991Z] TypeError: features[nextFeature] is not a function
+    at init (/usr/local/lib/node_modules/firebase-tools/lib/init/index.js:13:49)
+    at /usr/local/lib/node_modules/firebase-tools/lib/init/index.js:14:14
+    at process._tickDomainCallback (internal/process/next_tick.js:135:7)
+[error] 
+[error] Error: An unexpected error has occurred.
