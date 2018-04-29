@@ -26,7 +26,7 @@ var precioInternet = 570;
 
 // Declación de variables para transferencia
 var cantidadTransferir = 0;
-var cuentasAmigas = [1234567, 7654321]
+var cuentasAmigas = ['1234567', 7654321];
 
 // Declaración de variables de validación
 var dato = 0;
@@ -196,6 +196,26 @@ function pagarServicio() {
 	// 	}
 	// }
 
+// FUNCIÓN PARA RECORRER EL ARREGLO DE LAS CUENTAS FRECUENTES
+function recorrerCuentasFrecuentes(){
+	var texto = '';
+	for(var i=0; i < cuentasAmigas.length; i++){
+		var texto =+ "Cuenta "+(i+1)+": "+cuentasAmigas[i]+" \n"
+		var largo = cuentasAmigas.length;
+		return [texto, largo];
+	}
+	console.log(texto, largo);
+}
+
+// FUNCIÓN PARA VALIDAR QUE LA CUENTA FRECUENTE ESTA DADA DE ALTA EN EL ARREGLO
+function validacionCuentaFrecuente(dato){
+	for(var i=0; i < cuentasAmigas.length; i++){
+		if (dato == cuentasAmigas[i]){
+			return true;
+		}
+	}
+}
+
 //FUNCIÓN PARA TRANSFERIR DINERO A LAS CUENTAS FRECUENTES
 function transferirDinero() {
 	if (claveValidacion){
@@ -203,20 +223,32 @@ function transferirDinero() {
 		var cantidadTransferir = parseFloat(cantidadTransferir);
 		if (!respetaSaldoCuenta(cantidadTransferir)){
 			alert("No hay saldo en tu cuenta para transferir esa cantidad de dinero");	
-		} else {
-			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir: " + "\n-Cuenta Amiga 1 es: " +  cuentasAmigas[0] + "\n-Cuenta Amiga 2 es: " + cuentasAmigas[1] + "\n-Cuenta Amiga 3 es: " + cuentasAmigas[2]);
-			for(var i=0; i < cuentasAmigas.length; i++){
-				cuentasAmigas[i] === cuentaDestino; 
+		} 
+		else {
+			var x = recorrerCuentasFrecuentes();
+			var texto = x[0];
+			var cuentaDestino = prompt("Ingrese el número de la cuenta amiga a la que deseas transferir " + "\n\n" + "Recuerde que las cuentas frecuentes actuales son:  \n" + texto);
+			if(validacionCuentaFrecuente(cuentaDestino)){
+				if (confirm('CONFIRMA que el número de la cuenta a transferir es: ' + cuentaDestino)){
+					alert('Ha realizado una transferencia a la cuenta No: ' + cuentaDestino + '\nEl monto de: $' + cantidadTransferir + ' será debitado de su cuenta');
+					restarDinero(cantidadTransferir);
+					actualizarSaldoEnPantalla();
+				}
+				else {
+					alert('la transferencia fue cancelada');
+				}
 			}
-			restarDinero(cantidadTransferir);
-			actualizarSaldoEnPantalla();
+			else {
+				alert('La cuenta No: ' + cuentaDestino + ' \n\n¡No forma parte de las cuentas frecuentes! \n\nOJO: Es necesario dar de alta la cuenta' );
+			}
 		}
 	}
 	else {
-			alert("No puedes realizar operaciones tu cuenta ha sido bloqueada, intenta ingresar de nuevo");
+		alert('Transferencia confirmada');
+		restarDinero(cantidadTransferir);
+		actualizarSaldoEnPantalla();
 	}
 }
-
 
 // FUNCIÓN PARA AGREGAR CUENTA FRECUENTE MEDIANTE UN PUSH AL ARRAY
 function agregarCuentaFrecuente(){
