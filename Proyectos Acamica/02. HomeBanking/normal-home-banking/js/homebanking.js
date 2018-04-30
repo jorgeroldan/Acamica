@@ -200,7 +200,6 @@ function pagarServicio() {
 function recorrerCuentasFrecuentes(){
 	var texto = '';
 	for(var i=0; i < cuentasAmigas.length; i++){
-		console.log(i);
 		var texto = texto + "Cuenta "+(i+1)+": "+cuentasAmigas[i]+" \n" ;
 		var largo = cuentasAmigas.length;
 	}

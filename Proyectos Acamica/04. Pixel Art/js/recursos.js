@@ -1,3 +1,14 @@
+
+
+// Función para Borrar Todo
+
+function borrarTodo(){
+  var borrarAnimado = document.getElementById('grilla-de-pixeles');
+  
+
+}
+
+
 // No modifiques estas funciones a menos que sepas MUY BIEN lo que estas haciendo!
 
 
