@@ -67,41 +67,54 @@ Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
     //COMPLETAR
-  grilla[filapos1][columnaPos1] = grilla[filapos2][columnaPos2];
-  grilla[filapos2][columnaPos2] = grilla[filapos1][columnaPos1];
+  var valorAnterior = grilla[filapos1][columnaPos1]
+  grilla[filapos1][columnaPos1] = grilla[filaPos2][columnaPos2];
+  grilla[filaPos2][columnaPos2] = valorAnterior;
+  console.log(grilla);
+
+  intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2); // DUDA: No estoy seguro si el intercambio lógico se incluye aqui
 }
 
 // Actualiza la posición de la pieza vacía
 function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
     //COMPLETAR
-  grilla[filaVacia][columnaVacia] = grilla[nuevaFila][nuevaColumna];
+    filaVacia = nuevaFila;
+    columnaVacia = nuevaColumna;
 }
 
 
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
     //COMPLETAR
-    if (fila <= 2 && columna <= 2 && fila >= 0 && columna <= 0){
-        return true
+    if (fila <= 2 && columna <= 2 && fila >= 0 && columna <= 0){  // DUDA: Creo que no se esta cumpliendo esta condición y siempre entra el else por eso lo saque
+        return true;
+        console.log('movimiento autorizado');
     }
+    // else {
+    //   alert('Ojo, No se puede realizar ese movimiento!');  
+    // }
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
 Las direcciones están dadas por números que representa: arriba (38), abajo (40), izquierda (37), derecha (39) */
 function moverEnDireccion(direccion) {
-  var nuevaFilaPiezaVacia;
-  var nuevaColumnaPiezaVacia;
+  var nuevaFilaPiezaVacia = 0;
+  var nuevaColumnaPiezaVacia = 0;
+  console.log('nuevaFilaPiezaVacia' + nuevaFilaPiezaVacia);
+  console.log('nuevaColumnaPiezaVacia' + nuevaColumnaPiezaVacia);
 
   // Mueve pieza hacia la abajo, reemplazandola con la blanca
   if (direccion === codigosDireccion.ABAJO) {
-    nuevaFilaPiezaBlanca = filaVacia - 1;
-    nuevaColumnaPiezaBlanca = columnaVacia;
+    nuevaFilaPiezaVacia = filaVacia + 1;
+    nuevaColumnaPiezaVacia = columnaVacia;
+    console.log("|| HACIA ABAJO \\/");
   }
     
   // Mueve pieza hacia arriba, reemplazandola con la blanca
   else if (direccion === codigosDireccion.ARRIBA) {
-    nuevaFilaPiezaBlanca = filaVacia + 1;
-    nuevaColumnaPiezaBlanca = columnaVacia;
+    nuevaFilaPiezaVacia = filaVacia - 1;
+    nuevaColumnaPiezaVacia = columnaVacia;
+    console.log("|| HACIA ARRIBA /\\");
   }
     
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
@@ -109,6 +122,7 @@ function moverEnDireccion(direccion) {
     //COMPLETAR
     nuevaColumnaPiezaVacia = columnaVacia -1;
     nuevaFilaPiezaBlanca = filaVacia;
+    console.log("|| HACIA DERECHA >");
   }
     
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
@@ -116,6 +130,7 @@ function moverEnDireccion(direccion) {
     // COMPLETAR
     nuevaColumnaPiezaVacia = columnaVacia +1;
     nuevaFilaPiezaBlanca = filaVacia;
+    console.log("|| HACIA IZQUIERDA <");
   }
 
   /* A continuación se chequea si la nueva posición es válida, si lo es, se intercambia. 
@@ -127,8 +142,9 @@ function moverEnDireccion(direccion) {
         actualizarPosicionVacia(nuevaFilaPiezaVacia, nuevaColumnaPiezaVacia);
 
   //COMPLETAR: Agregar la dirección del movimiento al arreglo de movimientos
-  movimientos.push(direccion);
     }
+  movimientos.push(direccion);
+  ultimaDireccion(direccion);
 }
 
 
@@ -267,9 +283,6 @@ function iniciar() {
     mostrarInstrucciones(instrucciones);
     mezclarPiezas(60);
     capturarTeclas();
-    ultimaDireccion(codigosDireccion.ARRIBA);
-    // actualizarPosicionVacia(1, 2)
-    // intercambiarPosicionesGrilla(0, 1, 1, 0)
 }
 
 // Ejecutamos la función iniciar
