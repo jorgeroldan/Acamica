@@ -55,6 +55,19 @@ li::before {
    display: block;
 }
 
+.cartel {
+  background-color: red;
+  height: 400px;
+}
+
+.texto-centrado {
+  text-align: center;
+}
+
+.links {
+  
+}
+
 #objetivo img {
      max-width: 100%;
    display: block;
@@ -88,10 +101,6 @@ li::before {
 
 #flecha{
   font-size: 60px;
-}
-
-.texto-centrado {
-  text-align: center;
 }
 
 #juego {

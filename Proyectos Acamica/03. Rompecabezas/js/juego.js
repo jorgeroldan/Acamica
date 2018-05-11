@@ -39,20 +39,32 @@ function ultimaDireccion(move){
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
     //COMPLETAR
-    for (var i =0; i >= grilla.length; i++) {
-      for (var j =0; j >= grilla[i].length; j++){
-        if (grilla === grilla[i][j]){
-            return true
+    
+    for (var i = 0; i < grilla.length; i++) {
+      for (var j =0; j < grilla[i].length; j++){
+        if (i*3+(1+j) !== grilla[i][j]){
+            return false;
+            console.log("Ganaste carajo")
         }
       }
     }
+    return  true;
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     //COMPLETAR
     console.log(grilla);
-    alert('Ganaste!!!');
+    var cartelGanador = document.getElementById("ganador");
+    var displayJuego = document.getElementById("displayprincipal");
+    if (cartelGanador.style.display === 'none') {
+        cartelGanador.style.display = 'block';
+        displayprincipal.style.display = 'none';
+    } else {
+        cartelGanador.style.display = 'none';
+        displayprincipal.style.display = 'block';
+    }
+    // alert('Ganaste!!!');
 }
 
 /* Función que intercambia dos posiciones en la grilla.
@@ -67,12 +79,12 @@ Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
     //COMPLETAR
-  var valorAnterior = grilla[filapos1][columnaPos1]
-  grilla[filapos1][columnaPos1] = grilla[filaPos2][columnaPos2];
+  var valorAnterior = grilla[filaPos1][columnaPos1];
+  grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
   grilla[filaPos2][columnaPos2] = valorAnterior;
   console.log(grilla);
 
-  intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2); // DUDA: No estoy seguro si el intercambio lógico se incluye aqui
+  // intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2); // DUDA: No estoy seguro si el intercambio lógico se incluye aqui
 }
 
 // Actualiza la posición de la pieza vacía
@@ -86,33 +98,23 @@ function actualizarPosicionVacia(nuevaFila, nuevaColumna) {
 // Para chequear si la posicón está dentro de la grilla.
 function posicionValida(fila, columna) {
     //COMPLETAR
-    if (fila <= 2 && columna <= 2 && fila >= 0 && columna <= 0){  // DUDA: Creo que no se esta cumpliendo esta condición y siempre entra el else por eso lo saque
-        return true;
-        console.log('movimiento autorizado');
-    }
-    // else {
-    //   alert('Ojo, No se puede realizar ese movimiento!');  
-    // }
+    console.log(fila, columna);
+    return fila <= 2 && columna <= 2 && fila >= 0 && columna >= 0;  
 }
 
 /* Movimiento de fichas, en este caso la que se mueve es la blanca intercambiando su posición con otro elemento.
 Las direcciones están dadas por números que representa: arriba (38), abajo (40), izquierda (37), derecha (39) */
 function moverEnDireccion(direccion) {
-  var nuevaFilaPiezaVacia = 0;
-  var nuevaColumnaPiezaVacia = 0;
-  console.log('nuevaFilaPiezaVacia' + nuevaFilaPiezaVacia);
-  console.log('nuevaColumnaPiezaVacia' + nuevaColumnaPiezaVacia);
-
   // Mueve pieza hacia la abajo, reemplazandola con la blanca
   if (direccion === codigosDireccion.ABAJO) {
-    nuevaFilaPiezaVacia = filaVacia + 1;
+    nuevaFilaPiezaVacia = filaVacia - 1;
     nuevaColumnaPiezaVacia = columnaVacia;
     console.log("|| HACIA ABAJO \\/");
   }
     
   // Mueve pieza hacia arriba, reemplazandola con la blanca
   else if (direccion === codigosDireccion.ARRIBA) {
-    nuevaFilaPiezaVacia = filaVacia - 1;
+    nuevaFilaPiezaVacia = filaVacia + 1;
     nuevaColumnaPiezaVacia = columnaVacia;
     console.log("|| HACIA ARRIBA /\\");
   }
@@ -120,16 +122,16 @@ function moverEnDireccion(direccion) {
   // Mueve pieza hacia la derecha, reemplazandola con la blanca
   else if (direccion === codigosDireccion.DERECHA) {
     //COMPLETAR
-    nuevaColumnaPiezaVacia = columnaVacia -1;
-    nuevaFilaPiezaBlanca = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia - 1;
+    nuevaFilaPiezaVacia = filaVacia;
     console.log("|| HACIA DERECHA >");
   }
     
   // Mueve pieza hacia la izquierda, reemplazandola con la blanca
   else if (direccion === codigosDireccion.IZQUIERDA) {
     // COMPLETAR
-    nuevaColumnaPiezaVacia = columnaVacia +1;
-    nuevaFilaPiezaBlanca = filaVacia;
+    nuevaColumnaPiezaVacia = columnaVacia + 1;
+    nuevaFilaPiezaVacia = filaVacia;
     console.log("|| HACIA IZQUIERDA <");
   }
 
@@ -235,21 +237,22 @@ Se calcula una posición aleatoria y se mueve en esa dirección. De esta forma
 se mezclará todo el tablero. */
 
 function mezclarPiezas(veces) {
-  if (veces <= 0) {
-    return;
-  }
+    if (veces <= 0) {
+        return;
+      }
+
+      var direcciones = [codigosDireccion.ABAJO, codigosDireccion.ARRIBA,
+          codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA
+        ];
+
+      var direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
+      moverEnDireccion(direccion);
+
+      setTimeout(function() {
+          mezclarPiezas(veces - 1);
+        }, 10);
+    }
   
-  var direcciones = [codigosDireccion.ABAJO, codigosDireccion.ARRIBA,
-      codigosDireccion.DERECHA, codigosDireccion.IZQUIERDA
-    ];
-
-  var direccion = direcciones[Math.floor(Math.random() * direcciones.length)];
-  moverEnDireccion(direccion);
-
-  setTimeout(function() {
-      mezclarPiezas(veces - 1);
-    }, 100);
-}
 
 /* capturarTeclas: Esta función captura las teclas presionadas por el usuario. Javascript
 permite detectar eventos, por ejemplo, cuando una tecla es presionada y en 
@@ -283,6 +286,7 @@ function iniciar() {
     mostrarInstrucciones(instrucciones);
     mezclarPiezas(60);
     capturarTeclas();
+    mostrarCartelGanador()
 }
 
 // Ejecutamos la función iniciar

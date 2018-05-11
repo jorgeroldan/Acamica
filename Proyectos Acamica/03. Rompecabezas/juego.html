@@ -4,46 +4,55 @@
     <meta charset="utf-8">
     <title>BMO Arcade</title>
     <link rel="stylesheet" href="css/juego.css">
+    <link rel="stylesheet" href="css/popup.css">
   </head>
   <body>
-    <div class="col-40">
-    
-      <div id="titulo">Rompecabezas</div>
-      <div id="instrucciones">
-        <h2>Instrucciones</h2>
-        <ul id="lista-instrucciones">
-          
-        </ul>
+    <div id="displayprincipal" style="display: none" >
+      <div class="col-40">
+      
+        <div id="titulo">Rompecabezas</div>
+        <div id="instrucciones">
+          <h2>Instrucciones</h2>
+          <ul id="lista-instrucciones">
+            
+          </ul>
+        </div>
+        <div id="objetivo">
+          <div class="texto-centrado">
+            <img src="assets/images/final.png" alt="">
+          </div>
+        </div>
+        <div id="movimientos">
+          <h2>Ultimo movimiento</h2>
+            <div id="flecha" class="texto-centrado">
+              <ul id="ultimo-mov">
+
+              </ul>
+            </div>
+        </div>
+        
       </div>
-      <div id="objetivo">
-        <div class="texto-centrado">
-          <img src="assets/images/final.png" alt="">
+      <div class="col-60">
+        <div id="juego">
+          <div id="pieza1" class="piezasjuego"><img src="assets/images/10.jpg" alt="pieza1"></div>
+          <div id="pieza2" class="piezasjuego"><img src="assets/images/20.jpg" alt="pieza2"></div>
+          <div id="pieza3" class="piezasjuego"><img src="assets/images/30.jpg" alt="pieza3"></div>
+          <div id="pieza4" class="piezasjuego"><img src="assets/images/40.jpg" alt="pieza4"></div>
+          <div id="pieza5" class="piezasjuego"><img src="assets/images/50.jpg" alt="pieza5"></div>
+          <div id="pieza6" class="piezasjuego"><img src="assets/images/60.jpg" alt="pieza6"></div>
+          <div id="pieza7" class="piezasjuego"><img src="assets/images/70.jpg" alt="pieza7"></div>
+          <div id="pieza8" class="piezasjuego"><img src="assets/images/80.jpg" alt="pieza8"></div>
+          <div id="pieza9" class="piezasjuego" style="visibility:hidden" src="assets/images/1.jpg"></div>
+        </div>
+        <div id="footer">
+        <div>Acamica  |  Rompecabezas  |  Jorge Roldan</div>
         </div>
       </div>
-      <div id="movimientos">
-        <h2>Ultimo movimiento</h2>
-          <div id="flecha" class="texto-centrado">
-            <ul id="ultimo-mov">
-
-            </ul>
-          </div>
-      </div>
-      
     </div>
-    <div class="col-60">
-      <div id="juego">
-        <div id="pieza1" class="piezasjuego"><img src="assets/images/10.jpg" alt="pieza1"></div>
-        <div id="pieza2" class="piezasjuego"><img src="assets/images/20.jpg" alt="pieza2"></div>
-        <div id="pieza3" class="piezasjuego"><img src="assets/images/30.jpg" alt="pieza3"></div>
-        <div id="pieza4" class="piezasjuego"><img src="assets/images/40.jpg" alt="pieza4"></div>
-        <div id="pieza5" class="piezasjuego"><img src="assets/images/50.jpg" alt="pieza5"></div>
-        <div id="pieza6" class="piezasjuego"><img src="assets/images/60.jpg" alt="pieza6"></div>
-        <div id="pieza7" class="piezasjuego"><img src="assets/images/70.jpg" alt="pieza7"></div>
-        <div id="pieza8" class="piezasjuego"><img src="assets/images/80.jpg" alt="pieza8"></div>
-        <div id="pieza9" class="piezasjuego"></div>
-      </div>
-      <div id="footer">
-      <div>Acamica  |  Rompecabezas  |  Jorge Roldan</div>
+    <div id="ganador" style="display: block">
+      <div class="cartel">
+        ganaste
+        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="iniciar()">Jugar de Nuevo</button>
       </div>
     </div>
     
