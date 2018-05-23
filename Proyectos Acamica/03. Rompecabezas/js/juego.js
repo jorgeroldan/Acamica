@@ -53,7 +53,7 @@ function chequearSiGano() {
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     //COMPLETAR
-    alert("Vamoooooo")
+    alert("Ganaste pero no sale el cartel de modal")
     $(document).ready(function(){
   
     $('#exampleModalCenter').on('shown.bs.modal', function () {
