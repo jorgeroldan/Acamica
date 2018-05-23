@@ -8,8 +8,8 @@ $(document).ready(function(){
     // $('#modal fade').modal('hide');
 
     $('#exampleModalCenter').on('shown.bs.modal', function () {
-      $('#modal-open').trigger('focus');
-      $('#modal-open').css("display", "block");
+      $('#modal-dialog').trigger('focus');
+      $('#modal-dialog').css("display", "block");
     })
 
     // When the first answer button is clicked, it will disappear

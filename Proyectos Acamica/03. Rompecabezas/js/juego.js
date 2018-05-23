@@ -53,23 +53,32 @@ function chequearSiGano() {
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     //COMPLETAR
-    cambiarDom();
-    confirm("Vamoooooo Carajo!! \nNo esperaba menos de un estudiante de ACAMICA.\nGanaste!! ¿Te gustaría un beneficio extra? ");
-}
+    $(document).ready(function(){
+  
+    $('#exampleModalCenter').on('shown.bs.modal', function () {
+      $('#modal-dialog').trigger('focus');
+      $('#modal-dialog').css("display", "block");
+    })
 
-function cambiarDom() {
-    //COMPLETAR
-    var cartelGanador = document.getElementById("ganador");
-    var displayJuego = document.getElementById("displayprincipal");
-    if (cartelGanador.style.display === 'none') {
-        cartelGanador.style.display = 'block';
-        displayprincipal.style.display = 'none';
-
-    } else {
-        cartelGanador.style.display = 'none';
-        displayprincipal.style.display = 'block';
-    }
+    // confirm("Vamoooooo Carajo!! \nNo esperaba menos de un estudiante de ACAMICA.\nGanaste!! ¿Te gustaría un beneficio extra? ");
 }
+)}
+
+// function cambiarDom() {
+//     //COMPLETAR
+//     var cartelGanador = document.getElementById("ganador");
+//     var displayJuego = document.getElementById("displayprincipal");
+//     if (cartelGanador.style.display === 'none') {
+//         cartelGanador.style.display = 'block';
+//         displayprincipal.style.display = 'none';
+
+//     } else {
+//         cartelGanador.style.display = 'none';
+//         displayprincipal.style.display = 'block';
+//     }
+// }
+
+
 /* Función que intercambia dos posiciones en la grilla.
 Pensar como intercambiar dos posiciones en un arreglo de arreglos. 
 Para que tengas en cuenta:
