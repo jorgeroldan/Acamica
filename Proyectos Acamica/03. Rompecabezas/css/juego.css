@@ -8,25 +8,6 @@ body {
   text-align: center;
 }
 
-/* Changes font/size/color of heading */
-h1 {
-  font-family: 'Monoton';
-  font-size: 100px;
-  color: green;
-}
-
-/* Changes font/size of "You have been selected..." */
-h2 {
-  font-family: 'Bungee Inline';
-  font-size: 40px;
-}
-
-/* Changes font/size of "10 x 2 = " */
-h3 {
-  font-family: 'Press Start 2P';
-  font-size: 45px;
-}
-
 
 ul {
   padding-left: 0;
@@ -91,24 +72,6 @@ li::before {
 .button{
   clear:both;
   margin: auto;
-}
-
-.answer {
-  font-family: 'Press Start 2P';
-  background-color: green;
-  color: white;
-  font-size: 25px;
-}
-
-.help {
-  font-family: 'Lato';
-  background-color: blue;
-  color: white;
-  font-size: 25px;
-}
-
-.btn btn-primary {
-  display: block;
 }
 
 #exampleModalCenter {
