@@ -5,7 +5,29 @@ body {
   margin: 5% auto;
   min-height: 100%;
   background-image: url(../assets/images/adventure.jpg);
+  text-align: center;
 }
+
+/* Changes font/size/color of heading */
+h1 {
+  font-family: 'Monoton';
+  font-size: 100px;
+  color: green;
+}
+
+/* Changes font/size of "You have been selected..." */
+h2 {
+  font-family: 'Bungee Inline';
+  font-size: 40px;
+}
+
+/* Changes font/size of "10 x 2 = " */
+h3 {
+  font-family: 'Press Start 2P';
+  font-size: 45px;
+}
+
+
 ul {
   padding-left: 0;
   list-style: none;
@@ -47,6 +69,7 @@ li::before {
    margin: 0px;
    padding: 0px;
    border: 1px solid grey;
+   animation: fadein 2s;
 
 }
 
@@ -56,16 +79,39 @@ li::before {
 }
 
 .cartel {
-  background-color: red;
-  height: 400px;
+  background-color: white;
+  color: red;
+  padding-bottom: 20px;
 }
 
 .texto-centrado {
   text-align: center;
 }
 
-.links {
-  
+.button{
+  clear:both;
+  margin: auto;
+}
+
+.answer {
+  font-family: 'Press Start 2P';
+  background-color: green;
+  color: white;
+  font-size: 25px;
+}
+.help {
+  font-family: 'Lato';
+  background-color: blue;
+  color: white;
+  font-size: 25px;
+}
+
+.btn btn-primary {
+  display: block;
+}
+
+#exampleModalCenter {
+  display: none;
 }
 
 #objetivo img {

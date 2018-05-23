@@ -39,12 +39,11 @@ function ultimaDireccion(move){
 Existen diferentes formas de hacer este chequeo a partir de la grilla. */
 function chequearSiGano() {
     //COMPLETAR
-    
     for (var i = 0; i < grilla.length; i++) {
       for (var j =0; j < grilla[i].length; j++){
         if (i*3+(1+j) !== grilla[i][j]){
+            console.log("js no necesito punto y coma....yeahhh"); 
             return false;
-            console.log("Ganaste carajo")
         }
       }
     }
@@ -54,19 +53,23 @@ function chequearSiGano() {
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     //COMPLETAR
-    console.log(grilla);
+    cambiarDom();
+    confirm("Vamoooooo Carajo!! \nNo esperaba menos de un estudiante de ACAMICA.\nGanaste!! ¿Te gustaría un beneficio extra? ");
+}
+
+function cambiarDom() {
+    //COMPLETAR
     var cartelGanador = document.getElementById("ganador");
     var displayJuego = document.getElementById("displayprincipal");
     if (cartelGanador.style.display === 'none') {
         cartelGanador.style.display = 'block';
         displayprincipal.style.display = 'none';
+
     } else {
         cartelGanador.style.display = 'none';
         displayprincipal.style.display = 'block';
     }
-    // alert('Ganaste!!!');
 }
-
 /* Función que intercambia dos posiciones en la grilla.
 Pensar como intercambiar dos posiciones en un arreglo de arreglos. 
 Para que tengas en cuenta:
@@ -79,10 +82,9 @@ Se te ocurre cómo solucionar esto con una variable temporal?
 */
 function intercambiarPosicionesGrilla(filaPos1, columnaPos1, filaPos2, columnaPos2) {
     //COMPLETAR
-  var valorAnterior = grilla[filaPos1][columnaPos1];
+  var valorAuxiliar = grilla[filaPos1][columnaPos1];
   grilla[filaPos1][columnaPos1] = grilla[filaPos2][columnaPos2];
-  grilla[filaPos2][columnaPos2] = valorAnterior;
-  console.log(grilla);
+  grilla[filaPos2][columnaPos2] = valorAuxiliar;
 
   // intercambiarPosiciones(filaPos1, columnaPos1, filaPos2, columnaPos2); // DUDA: No estoy seguro si el intercambio lógico se incluye aqui
 }
@@ -286,7 +288,6 @@ function iniciar() {
     mostrarInstrucciones(instrucciones);
     mezclarPiezas(60);
     capturarTeclas();
-    mostrarCartelGanador()
 }
 
 // Ejecutamos la función iniciar

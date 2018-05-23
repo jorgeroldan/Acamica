@@ -4,10 +4,16 @@
     <meta charset="utf-8">
     <title>BMO Arcade</title>
     <link rel="stylesheet" href="css/juego.css">
-    <link rel="stylesheet" href="css/popup.css">
+    <!-- Imports Google Font -->
+    <link href="https://fonts.googleapis.com/css?family=Bungee+Inline|Bungee+Shade|Monoton|Press+Start+2P|Sigmar+One|Ultra" rel="stylesheet">
+    <!-- Imports Font Awesome library -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.6.3/css/font-awesome.min.css">
+
+    <!-- Estilos para Modal Popup-->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   </head>
   <body>
-    <div id="displayprincipal" style="display: none" >
+    <div id="displayprincipal" style="display: block" >
       <div class="col-40">
       
         <div id="titulo">Rompecabezas</div>
@@ -42,20 +48,48 @@
           <div id="pieza6" class="piezasjuego"><img src="assets/images/60.jpg" alt="pieza6"></div>
           <div id="pieza7" class="piezasjuego"><img src="assets/images/70.jpg" alt="pieza7"></div>
           <div id="pieza8" class="piezasjuego"><img src="assets/images/80.jpg" alt="pieza8"></div>
-          <div id="pieza9" class="piezasjuego" style="visibility:hidden" src="assets/images/1.jpg"></div>
+          <div id="pieza9" class="piezasjuego"></div>
         </div>
         <div id="footer">
         <div>Acamica  |  Rompecabezas  |  Jorge Roldan</div>
         </div>
       </div>
     </div>
-    <div id="ganador" style="display: block">
-      <div class="cartel">
-        ganaste
-        <button class="mdl-button mdl-js-button mdl-button--raised mdl-js-ripple-effect mdl-button--accent" onclick="iniciar()">Jugar de Nuevo</button>
+
+    <!-- Button trigger modal -->
+    <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModalCenter">
+      Launch demo modal
+    </button>
+
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModalCenter" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="exampleModalLongTitle"><span style="color: blue">Rompecabezas</span> | Acamica</h5>
+            
+          </div>
+          <div class="modal-body">
+            <h1>Vamooos Carajo, muy bien!!!</h1>
+            <img src="assets/images/win2.gif" alt="">
+            <h5>No esperaba menos de un estudiante de <span style="color: blue">Acamica</span> =)</h5>
+
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">Cerrar</span>
+            </button>
+            <button type="button" class="btn btn-primary" onclick="iniciar()">Jugar de Nuevo</button>
+          </div>
+        </div>
       </div>
     </div>
     
     <script src="js/juego.js"></script>
+    <script src="js/cartel.js"></script>
+    <!-- jQuery library -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- Latest compiled JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   </body>
 </html>
