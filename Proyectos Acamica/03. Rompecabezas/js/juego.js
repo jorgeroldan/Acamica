@@ -42,17 +42,18 @@ function chequearSiGano() {
     for (var i = 0; i < grilla.length; i++) {
       for (var j =0; j < grilla[i].length; j++){
         if (i*3+(1+j) !== grilla[i][j]){
-            console.log("js no necesito punto y coma....yeahhh"); 
             return false;
         }
       }
     }
-    return  true;
+    console.log("ganaste"); 
+    return  true;   
 }
 
 // Implementar alguna forma de mostrar un cartel que avise que ganaste el juego
 function mostrarCartelGanador() {
     //COMPLETAR
+    alert("Vamoooooo")
     $(document).ready(function(){
   
     $('#exampleModalCenter').on('shown.bs.modal', function () {
