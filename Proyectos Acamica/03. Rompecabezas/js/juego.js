@@ -56,9 +56,13 @@ function mostrarCartelGanador() {
     alert("Ganaste pero no sale el cartel de modal")
     $(document).ready(function(){
   
-    $('#exampleModalCenter').on('shown.bs.modal', function () {
-      $('#modal-dialog').trigger('focus');
-      $('#modal-dialog').css("display", "block");
+    // $('#exampleModalCenter').on('shown.bs.modal', function () {
+    //   $('#modal-dialog').trigger('focus');
+    //   $('#modal-dialog').css("display", "block");
+    // })
+
+    $('#exampleModalCenter').on('show.bs.modal', function (e) {
+    if (!gano) return e.preventDefault() // stops modal from being shown
     })
 
     // confirm("Vamoooooo Carajo!! \nNo esperaba menos de un estudiante de ACAMICA.\nGanaste!! ¿Te gustaría un beneficio extra? ");
