@@ -23,16 +23,29 @@ var nombreColores = ['White', 'LightYellow',
 // Variable para guardar el elemento 'color-personalizado'
 // Es decir, el que se elige con la rueda de color.
 let colorPersonalizado = document.getElementById('color-personalizado');
-
 let paleta = document.getElementById('paleta');
-let grillPixeles = document.getElementById('grilla-pixeles');
-let seleccionColor
+let grillaPixeles = document.getElementById('grilla-pixeles');
 
-function nombresDeColores() {
-
-
+function nombresDeColores(arrColores) {
+  for (let i = 0; i < arrColores.length; i++) {
+    const color = arrColores[i];
+      let element = document.createElement('div');
+      element.style.backgroundColor = color;
+      element.classList.add("color-paleta");
+      paleta.appendChild(element);
+  }
 }
 
+
+
+function crearGrilla(){
+  for (let i = 0; i < 1750; i++) {
+    let element = document.createElement('div');
+    element.classList.add("grilla-pixeles");
+    grillaPixeles.appendChild(element);
+  }
+
+}
 
 colorPersonalizado.addEventListener('change', 
   (function() {
@@ -54,7 +67,7 @@ function pintarPixel(e){
 $(document).ready(function(){
 
 let valorDeColor;
-
-
+nombresDeColores(nombreColores);
+crearGrilla();
 
 })
